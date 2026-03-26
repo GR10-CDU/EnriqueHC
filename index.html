@@ -5,7 +5,7 @@ KINESIO HC - Sistema de Historias Clínicas y Consultas
 Kinesiólogo: Lic. Enrique Naveira
 ═══════════════════════════════════════════════════════════════════════════
 Archivo: index.html
-Fecha: 2026-03-26 19:10 ARG
+Fecha: 2026-03-26 19:20 ARG
 ═══════════════════════════════════════════════════════════════════════════
 -->
 <html lang="es">
@@ -765,14 +765,18 @@ Fecha: 2026-03-26 19:10 ARG
       
       .nav-tabs { 
         width: 100%; 
-        justify-content: center;
+        justify-content: space-between;
         padding: 4px;
-        gap: 3px;
+        gap: 2px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
       }
       
       .nav-tab {
-        padding: 8px 12px;
-        font-size: 0.8rem;
+        padding: 10px 10px;
+        font-size: 0.75rem;
+        flex-shrink: 0;
+        min-width: auto;
       }
       
       .main { padding: 12px; }
@@ -1341,30 +1345,38 @@ Fecha: 2026-03-26 19:10 ARG
     }
     
     function initNavigation() {
-      document.querySelectorAll('.nav-tab').forEach(tab => {
-        tab.onclick = function() {
-          if (this.disabled) return false;
-          const section = this.dataset.section;
-          
-          if (['historia', 'consultas', 'ordenes'].includes(section) && !selectedPaciente) {
-            showToast('Primero seleccione un paciente', 'error');
-            return false;
-          }
-          
-          document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-          this.classList.add('active');
-          
-          document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-          const secId = 'sec' + section.charAt(0).toUpperCase() + section.slice(1);
-          document.getElementById(secId).classList.add('active');
-          
-          if (section === 'historia') loadHistoriaClinica();
-          if (section === 'consultas') loadConsultas();
-          if (section === 'ordenes') loadOrdenes();
-          
-          return false;
-        };
-      });
+      var tabs = document.querySelectorAll('.nav-tab');
+      for (var i = 0; i < tabs.length; i++) {
+        (function(tab) {
+          tab.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (tab.disabled) return;
+            var section = tab.getAttribute('data-section');
+            
+            if ((section === 'historia' || section === 'consultas' || section === 'ordenes') && !selectedPaciente) {
+              showToast('Primero seleccione un paciente', 'error');
+              return;
+            }
+            
+            var allTabs = document.querySelectorAll('.nav-tab');
+            for (var j = 0; j < allTabs.length; j++) {
+              allTabs[j].classList.remove('active');
+            }
+            tab.classList.add('active');
+            
+            var allSections = document.querySelectorAll('.section');
+            for (var k = 0; k < allSections.length; k++) {
+              allSections[k].classList.remove('active');
+            }
+            var secId = 'sec' + section.charAt(0).toUpperCase() + section.slice(1);
+            document.getElementById(secId).classList.add('active');
+            
+            if (section === 'historia') loadHistoriaClinica();
+            if (section === 'consultas') loadConsultas();
+            if (section === 'ordenes') loadOrdenes();
+          }, false);
+        })(tabs[i]);
+      }
     }
     
     function initDateInputs() {
@@ -1662,15 +1674,16 @@ Fecha: 2026-03-26 19:10 ARG
       selectedPaciente = pacientes.find(p => p.id === id);
       renderPacientes();
       
-      // Habilitar tabs
+      // Habilitar tabs - usar removeAttribute para mayor compatibilidad
       document.querySelectorAll('.nav-tab').forEach(tab => {
         if (['historia', 'consultas', 'ordenes'].includes(tab.dataset.section)) {
+          tab.removeAttribute('disabled');
           tab.disabled = false;
         }
       });
       
       updatePatientHeaders();
-      showToast(`Paciente: ${selectedPaciente.ayn}`, 'success');
+      showToast('Paciente: ' + selectedPaciente.ayn, 'success');
     }
     
     function updatePatientHeaders() {
