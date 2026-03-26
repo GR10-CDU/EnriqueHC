@@ -5,7 +5,7 @@ KINESIO HC - Sistema de Historias Clínicas y Consultas
 Kinesiólogo: Lic. Enrique Naveira
 ═══════════════════════════════════════════════════════════════════════════
 Archivo: index.html
-Fecha: 2026-03-26 18:48 ARG
+Fecha: 2026-03-26 18:55 ARG
 ═══════════════════════════════════════════════════════════════════════════
 -->
 <html lang="es">
@@ -1111,7 +1111,7 @@ Fecha: 2026-03-26 18:48 ARG
       <div class="card">
         <div class="card-header">
           <h2 class="card-title">Órdenes Médicas</h2>
-          <button class="btn btn-primary" onclick="openNewOrden()">+ Nueva Orden</button>
+          <button type="button" class="btn btn-primary" id="btnNuevaOrden">+ Nueva Orden</button>
         </div>
         <div id="ordenesList"></div>
       </div>
@@ -1307,13 +1307,25 @@ Fecha: 2026-03-26 18:48 ARG
       initNavigation();
       initEvalTables();
       initDateInputs();
+      initOrdenesButtons();
       loadFromCache();
       loadPacientes();
     });
     
+    function initOrdenesButtons() {
+      const btnNuevaOrden = document.getElementById('btnNuevaOrden');
+      if (btnNuevaOrden) {
+        btnNuevaOrden.addEventListener('click', function(e) {
+          e.preventDefault();
+          openNewOrden();
+        });
+      }
+    }
+    
     function initNavigation() {
       document.querySelectorAll('.nav-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
+        const handler = function(e) {
+          e.preventDefault();
           if (tab.disabled) return;
           const section = tab.dataset.section;
           
@@ -1331,7 +1343,10 @@ Fecha: 2026-03-26 18:48 ARG
           if (section === 'historia') loadHistoriaClinica();
           if (section === 'consultas') loadConsultas();
           if (section === 'ordenes') loadOrdenes();
-        });
+        };
+        
+        tab.addEventListener('click', handler);
+        tab.addEventListener('touchend', handler);
       });
     }
     
