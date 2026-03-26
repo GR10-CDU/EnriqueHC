@@ -5,7 +5,7 @@ KINESIO HC - Sistema de Historias Clínicas y Consultas
 Kinesiólogo: Enrique Naveira
 ═══════════════════════════════════════════════════════════════════════════
 Archivo: index.html
-Fecha: 2026-03-26 15:00 ARG
+Fecha: 2026-03-26 15:35 ARG
 ═══════════════════════════════════════════════════════════════════════════
 -->
 <html lang="es">
@@ -965,7 +965,7 @@ Fecha: 2026-03-26 15:00 ARG
             <textarea class="form-textarea" id="hcDx" rows="3"></textarea>
           </div>
           <div class="form-group">
-            <label class="form-label">E.C. (Estado/Cuadro Clínico)</label>
+            <label class="form-label">E.C. (Exámenes Complementarios)</label>
             <textarea class="form-textarea" id="hcEc" rows="3"></textarea>
           </div>
         </div>
@@ -1293,8 +1293,8 @@ Fecha: 2026-03-26 15:00 ARG
             <input type="date" class="form-input" id="pacienteFechaNac">
           </div>
           <div class="form-group">
-            <label class="form-label">E.A. (Edad Actual / Info adicional)</label>
-            <input type="text" class="form-input" id="pacienteEa">
+            <label class="form-label">E.A. (Enfermedad Actual)</label>
+            <textarea class="form-textarea" id="pacienteEa" rows="3"></textarea>
           </div>
         </div>
       </div>
@@ -1375,7 +1375,7 @@ Fecha: 2026-03-26 15:00 ARG
     // ═══════════════════════════════════════════════════════════════════════
     // CONFIGURACIÓN
     // ═══════════════════════════════════════════════════════════════════════
-    const SCRIPT_URL = ''; // <-- COMPLETAR CON TU URL DEL WEB APP
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz87uvQ01zehK4XaLp0C-Z_x7H10TIgu1XJsn0TBcCWUkZ_aplILpXBOKuUxFhaCKE/exec';
     const API_SECRET = 'KINESIO2026-NaveiraHC';
     
     // Estado de la aplicación
@@ -2039,7 +2039,7 @@ Fecha: 2026-03-26 15:00 ARG
           <span class="patient-header-value">${selectedPaciente.fechaNac || '-'}</span>
         </div>
         <div class="patient-header-item">
-          <span class="patient-header-label">E.A.</span>
+          <span class="patient-header-label">Enf. Actual</span>
           <span class="patient-header-value">${selectedPaciente.ea || '-'}</span>
         </div>
         <div class="patient-header-item">
