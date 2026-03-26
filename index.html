@@ -5,7 +5,7 @@ KINESIO HC - Sistema de Historias Clínicas y Consultas
 Kinesiólogo: Lic. Enrique Naveira
 ═══════════════════════════════════════════════════════════════════════════
 Archivo: index.html
-Fecha: 2026-03-26 18:58 ARG
+Fecha: 2026-03-26 19:05 ARG
 ═══════════════════════════════════════════════════════════════════════════
 -->
 <html lang="es">
@@ -120,11 +120,19 @@ Fecha: 2026-03-26 18:58 ARG
       cursor: pointer;
       transition: all 0.2s;
       letter-spacing: 0.5px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(255,255,255,0.3);
+      user-select: none;
+      position: relative;
+      z-index: 10;
     }
     
-    .nav-tab:hover:not(:disabled) { background: rgba(255,255,255,0.25); }
+    .nav-tab:hover:not(:disabled), .nav-tab:active:not(:disabled) { background: rgba(255,255,255,0.25); }
     .nav-tab.active { background: var(--white); color: var(--primary-dark); box-shadow: var(--shadow-sm); }
-    .nav-tab:disabled { opacity: 0.4; cursor: not-allowed; }
+    .nav-tab:disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
     
     /* MAIN */
     .main { padding: 20px; max-width: 1200px; margin: 0 auto; }
@@ -922,10 +930,10 @@ Fecha: 2026-03-26 18:58 ARG
       </div>
     </div>
     <nav class="nav-tabs">
-      <button class="nav-tab active" data-section="pacientes">Pacientes</button>
-      <button class="nav-tab" data-section="historia" disabled>Historia</button>
-      <button class="nav-tab" data-section="consultas" disabled>Consultas</button>
-      <button class="nav-tab" data-section="ordenes" disabled>Ordenes</button>
+      <button type="button" class="nav-tab active" data-section="pacientes">Pacientes</button>
+      <button type="button" class="nav-tab" data-section="historia" disabled>Historia</button>
+      <button type="button" class="nav-tab" data-section="consultas" disabled>Consultas</button>
+      <button type="button" class="nav-tab" data-section="ordenes" disabled>Ordenes</button>
     </nav>
   </header>
   
@@ -1324,29 +1332,28 @@ Fecha: 2026-03-26 18:58 ARG
     
     function initNavigation() {
       document.querySelectorAll('.nav-tab').forEach(tab => {
-        const handler = function(e) {
-          e.preventDefault();
-          if (tab.disabled) return;
-          const section = tab.dataset.section;
+        tab.onclick = function() {
+          if (this.disabled) return false;
+          const section = this.dataset.section;
           
           if (['historia', 'consultas', 'ordenes'].includes(section) && !selectedPaciente) {
             showToast('Primero seleccione un paciente', 'error');
-            return;
+            return false;
           }
           
           document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
+          this.classList.add('active');
           
           document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-          document.getElementById('sec' + section.charAt(0).toUpperCase() + section.slice(1)).classList.add('active');
+          const secId = 'sec' + section.charAt(0).toUpperCase() + section.slice(1);
+          document.getElementById(secId).classList.add('active');
           
           if (section === 'historia') loadHistoriaClinica();
           if (section === 'consultas') loadConsultas();
           if (section === 'ordenes') loadOrdenes();
+          
+          return false;
         };
-        
-        tab.addEventListener('click', handler);
-        tab.addEventListener('touchend', handler);
       });
     }
     
