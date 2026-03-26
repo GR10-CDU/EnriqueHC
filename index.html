@@ -5,7 +5,7 @@ KINESIO HC - Sistema de Historias Clínicas y Consultas
 Kinesiólogo: Enrique Naveira
 ═══════════════════════════════════════════════════════════════════════════
 Archivo: index.html
-Fecha: 2026-03-26 15:35 ARG
+Fecha: 2026-03-26 15:45 ARG
 ═══════════════════════════════════════════════════════════════════════════
 -->
 <html lang="es">
@@ -1273,7 +1273,7 @@ Fecha: 2026-03-26 15:35 ARG
         <div class="form-grid">
           <input type="hidden" id="pacienteId">
           <div class="form-group full-width">
-            <label class="form-label">Nombre y Apellido *</label>
+            <label class="form-label">Apellido y Nombre *</label>
             <input type="text" class="form-input" id="pacienteNya" required>
           </div>
           <div class="form-group full-width">
@@ -1452,7 +1452,8 @@ Fecha: 2026-03-26 15:35 ARG
       try {
         const response = await fetch(SCRIPT_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          mode: 'cors',
+          redirect: 'follow',
           body: JSON.stringify({ action, apiSecret: API_SECRET, ...data })
         });
         const result = await response.json();
@@ -1552,7 +1553,7 @@ Fecha: 2026-03-26 15:35 ARG
     async function savePaciente() {
       const nya = document.getElementById('pacienteNya').value.trim();
       if (!nya) {
-        showToast('El nombre es obligatorio', 'error');
+        showToast('El apellido y nombre es obligatorio', 'error');
         return;
       }
       
@@ -2019,7 +2020,7 @@ Fecha: 2026-03-26 15:35 ARG
       const container = document.getElementById(containerId);
       container.innerHTML = `
         <div class="patient-header-item">
-          <span class="patient-header-label">Nombre y Apellido</span>
+          <span class="patient-header-label">Apellido y Nombre</span>
           <span class="patient-header-value">${selectedPaciente.nya}</span>
         </div>
         <div class="patient-header-item">
