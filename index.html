@@ -5,7 +5,7 @@ KINESIO HC - Sistema de Historias Clínicas y Consultas
 Kinesiólogo: Lic. Enrique Naveira
 ═══════════════════════════════════════════════════════════════════════════
 Archivo: index.html
-Fecha: 2026-03-26 16:30 ARG
+Fecha: 2026-03-26 16:50 ARG
 ═══════════════════════════════════════════════════════════════════════════
 -->
 <html lang="es">
@@ -13,6 +13,7 @@ Fecha: 2026-03-26 16:30 ARG
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kinesio HC - Lic. Enrique Naveira</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='50' rx='20' ry='40' fill='%232563eb'/%3E%3Ccircle cx='50' cy='18' r='8' fill='%232563eb'/%3E%3Cpath d='M10 55 Q30 40 40 55 Q30 70 10 55' fill='%236b7280'/%3E%3Cpath d='M90 55 Q70 40 60 55 Q70 70 90 55' fill='%236b7280'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -701,7 +702,16 @@ Fecha: 2026-03-26 16:30 ARG
   <!-- HEADER -->
   <header class="header">
     <div class="logo">
-      <div class="logo-icon">🦴</div>
+      <div class="logo-icon">
+        <svg viewBox="0 0 50 50" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
+          <!-- Persona -->
+          <ellipse cx="25" cy="28" rx="8" ry="16" fill="#2563eb"/>
+          <circle cx="25" cy="10" r="5" fill="#2563eb"/>
+          <!-- Manos -->
+          <path d="M5 30 Q15 22 20 30 Q15 38 5 30" fill="#6b7280"/>
+          <path d="M45 30 Q35 22 30 30 Q35 38 45 30" fill="#6b7280"/>
+        </svg>
+      </div>
       <div class="logo-text">
         <h1>Kinesio HC</h1>
         <span>Lic. Enrique Naveira</span>
@@ -946,6 +956,26 @@ Fecha: 2026-03-26 16:30 ARG
         <div class="form-group">
           <label class="form-label">E.A. (Enfermedad Actual)</label>
           <textarea class="form-textarea" id="pacienteEa" rows="3"></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Obra Social / Particular</label>
+            <input type="text" class="form-input" id="pacienteObraSocial" placeholder="Ej: OSDE, Swiss Medical, Particular">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nro. Afiliado</label>
+            <input type="text" class="form-input" id="pacienteNroAfiliado">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Obra Social / Particular</label>
+            <input type="text" class="form-input" id="pacienteObraSocial" placeholder="Ej: OSDE, Swiss Medical, Particular">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nro. Afiliado</label>
+            <input type="text" class="form-input" id="pacienteNroAfiliado">
+          </div>
         </div>
       </div>
       <div class="modal-footer">
@@ -1380,8 +1410,12 @@ Fecha: 2026-03-26 16:30 ARG
           <span class="patient-header-value">${selectedPaciente.fechaNac || '-'}</span>
         </div>
         <div class="patient-header-item">
-          <span class="patient-header-label">Enf. Actual</span>
-          <span class="patient-header-value">${selectedPaciente.ea || '-'}</span>
+          <span class="patient-header-label">Obra Social</span>
+          <span class="patient-header-value">${selectedPaciente.obraSocial || '-'}</span>
+        </div>
+        <div class="patient-header-item">
+          <span class="patient-header-label">Nro. Afiliado</span>
+          <span class="patient-header-value">${selectedPaciente.nroAfiliado || '-'}</span>
         </div>
       `;
       document.getElementById('patientHeaderHC').innerHTML = html;
@@ -1399,6 +1433,8 @@ Fecha: 2026-03-26 16:30 ARG
       document.getElementById('pacienteFechaNacMes').value = '';
       document.getElementById('pacienteFechaNacAnio').value = '';
       document.getElementById('pacienteEa').value = '';
+      document.getElementById('pacienteObraSocial').value = '';
+      document.getElementById('pacienteNroAfiliado').value = '';
       document.querySelector('#modalPaciente .modal-title').textContent = 'Nuevo Paciente';
       openModal('modalPaciente');
     }
@@ -1423,6 +1459,8 @@ Fecha: 2026-03-26 16:30 ARG
         }
         
         document.getElementById('pacienteEa').value = p.ea || '';
+        document.getElementById('pacienteObraSocial').value = p.obraSocial || '';
+        document.getElementById('pacienteNroAfiliado').value = p.nroAfiliado || '';
         document.querySelector('#modalPaciente .modal-title').textContent = 'Editar Paciente';
         openModal('modalPaciente');
       }
@@ -1447,7 +1485,9 @@ Fecha: 2026-03-26 16:30 ARG
         tel: document.getElementById('pacienteTel').value.trim(),
         ocupacion: document.getElementById('pacienteOcupacion').value.trim(),
         fechaNac,
-        ea: document.getElementById('pacienteEa').value.trim()
+        ea: document.getElementById('pacienteEa').value.trim(),
+        obraSocial: document.getElementById('pacienteObraSocial').value.trim(),
+        nroAfiliado: document.getElementById('pacienteNroAfiliado').value.trim()
       };
       
       const result = await apiCall('savePaciente', { paciente }, 'Guardando paciente...');
