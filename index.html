@@ -2,22 +2,21 @@
 <!--
 ═══════════════════════════════════════════════════════════════════════════
 KINESIO HC - Sistema de Historias Clínicas y Consultas
-Kinesiólogo: Enrique Naveira
+Kinesiólogo: Lic. Enrique Naveira
 ═══════════════════════════════════════════════════════════════════════════
 Archivo: index.html
-Fecha: 2026-03-26 15:45 ARG
+Fecha: 2026-03-26 16:30 ARG
 ═══════════════════════════════════════════════════════════════════════════
 -->
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kinesio HC - Enrique Naveira</title>
+  <title>Kinesio HC - Lic. Enrique Naveira</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Paleta pastel suave */
       --mint: #a8e6cf;
       --mint-light: #dcedc1;
       --peach: #ffd3b6;
@@ -26,8 +25,6 @@ Fecha: 2026-03-26 15:45 ARG
       --sky: #a5d8ff;
       --cream: #fff9f0;
       --white: #ffffff;
-      
-      /* Colores funcionales */
       --primary: #5fb49c;
       --primary-dark: #449981;
       --secondary: #f7b267;
@@ -35,29 +32,18 @@ Fecha: 2026-03-26 15:45 ARG
       --success: #7ecba1;
       --warning: #ffd166;
       --danger: #ef476f;
-      
-      /* Textos */
       --text-dark: #2d3748;
       --text-medium: #4a5568;
       --text-light: #718096;
-      
-      /* Sombras suaves */
       --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
       --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
       --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
-      
-      /* Bordes */
       --radius-sm: 8px;
       --radius-md: 12px;
       --radius-lg: 20px;
-      --radius-xl: 28px;
     }
     
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     
     body {
       font-family: 'Nunito', sans-serif;
@@ -67,12 +53,10 @@ Fecha: 2026-03-26 15:45 ARG
       color: var(--text-dark);
     }
     
-    /* ═══════════════════════════════════════════════════════════════════
-       HEADER
-    ═══════════════════════════════════════════════════════════════════ */
+    /* HEADER */
     .header {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      padding: 16px 24px;
+      padding: 12px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -85,18 +69,18 @@ Fecha: 2026-03-26 15:45 ARG
     .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     
     .logo-icon {
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       background: var(--white);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
+      font-size: 20px;
     }
     
     .logo-text {
@@ -105,91 +89,52 @@ Fecha: 2026-03-26 15:45 ARG
     
     .logo-text h1 {
       font-family: 'Quicksand', sans-serif;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       font-weight: 700;
-      letter-spacing: 0.5px;
     }
     
     .logo-text span {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       opacity: 0.9;
     }
     
-    /* ═══════════════════════════════════════════════════════════════════
-       NAVEGACIÓN
-    ═══════════════════════════════════════════════════════════════════ */
+    /* NAV TABS */
     .nav-tabs {
       display: flex;
-      gap: 8px;
-      padding: 16px 24px;
-      background: var(--white);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      overflow-x: auto;
+      gap: 4px;
+      background: rgba(255,255,255,0.2);
+      padding: 4px;
+      border-radius: var(--radius-md);
     }
     
     .nav-tab {
-      padding: 12px 24px;
+      padding: 8px 16px;
       border: none;
-      border-radius: var(--radius-lg);
-      background: var(--cream);
-      color: var(--text-medium);
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      white-space: nowrap;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    
-    .nav-tab:hover {
-      background: var(--mint-light);
-      transform: translateY(-2px);
-    }
-    
-    .nav-tab.active {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      background: transparent;
       color: var(--white);
-      box-shadow: var(--shadow-md);
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s;
     }
     
-    .nav-tab-icon {
-      font-size: 1.2rem;
-    }
+    .nav-tab:hover:not(:disabled) { background: rgba(255,255,255,0.2); }
+    .nav-tab.active { background: var(--white); color: var(--primary-dark); }
+    .nav-tab:disabled { opacity: 0.5; cursor: not-allowed; }
     
-    /* ═══════════════════════════════════════════════════════════════════
-       CONTENEDOR PRINCIPAL
-    ═══════════════════════════════════════════════════════════════════ */
-    .main-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 24px;
-    }
+    /* MAIN */
+    .main { padding: 20px; max-width: 1200px; margin: 0 auto; }
+    .section { display: none; }
+    .section.active { display: block; }
     
-    .section {
-      display: none;
-    }
-    
-    .section.active {
-      display: block;
-      animation: fadeIn 0.4s ease;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    /* ═══════════════════════════════════════════════════════════════════
-       CARDS
-    ═══════════════════════════════════════════════════════════════════ */
+    /* CARDS */
     .card {
       background: var(--white);
       border-radius: var(--radius-lg);
-      padding: 24px;
-      box-shadow: var(--shadow-sm);
+      padding: 20px;
+      box-shadow: var(--shadow-md);
       margin-bottom: 20px;
     }
     
@@ -197,9 +142,7 @@ Fecha: 2026-03-26 15:45 ARG
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 16px;
-      border-bottom: 2px solid var(--mint-light);
+      margin-bottom: 16px;
     }
     
     .card-title {
@@ -207,161 +150,155 @@ Fecha: 2026-03-26 15:45 ARG
       font-size: 1.3rem;
       font-weight: 700;
       color: var(--primary-dark);
-      display: flex;
-      align-items: center;
-      gap: 10px;
     }
     
-    /* ═══════════════════════════════════════════════════════════════════
-       FORMULARIOS
-    ═══════════════════════════════════════════════════════════════════ */
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 16px;
-    }
-    
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    
-    .form-group.full-width {
-      grid-column: 1 / -1;
-    }
+    /* FORMS */
+    .form-group { margin-bottom: 12px; }
     
     .form-label {
-      font-size: 0.85rem;
+      display: block;
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--text-medium);
+      margin-bottom: 4px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
     
-    .form-input, .form-select, .form-textarea {
-      padding: 12px 16px;
-      border: 2px solid var(--mint-light);
-      border-radius: var(--radius-md);
-      font-family: 'Nunito', sans-serif;
-      font-size: 1rem;
-      color: var(--text-dark);
-      transition: all 0.3s ease;
-      background: var(--cream);
-    }
-    
-    .form-input:focus, .form-select:focus, .form-textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      background: var(--white);
-      box-shadow: 0 0 0 3px rgba(95, 180, 156, 0.15);
-    }
-    
-    .form-textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-    
-    /* ═══════════════════════════════════════════════════════════════════
-       BOTONES
-    ═══════════════════════════════════════════════════════════════════ */
-    .btn {
-      padding: 12px 24px;
-      border: none;
-      border-radius: var(--radius-md);
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 2px solid var(--mint);
+      border-radius: var(--radius-sm);
       font-family: 'Nunito', sans-serif;
       font-size: 0.95rem;
+      transition: all 0.2s;
+      background: var(--white);
+    }
+    
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(95, 180, 156, 0.2);
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    
+    /* DATE INPUT */
+    .date-input-group {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .date-input-group input {
+      text-align: center;
+      padding: 10px 6px;
+    }
+    
+    .date-input-group .day, .date-input-group .month { width: 55px; }
+    .date-input-group .year { width: 75px; }
+    .date-input-group span { color: var(--text-light); font-weight: 600; font-size: 1.1rem; }
+    
+    /* BUTTONS */
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.9rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.2s;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
     
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      background: var(--primary);
       color: var(--white);
     }
     
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
     
     .btn-secondary {
-      background: var(--peach);
+      background: var(--cream);
       color: var(--text-dark);
     }
     
-    .btn-secondary:hover {
-      background: var(--secondary);
-    }
+    .btn-secondary:hover { background: var(--mint-light); }
     
-    .btn-danger {
-      background: var(--coral);
-      color: var(--white);
-    }
+    .btn-danger { background: var(--coral); color: var(--white); }
+    .btn-danger:hover { background: var(--danger); }
     
-    .btn-danger:hover {
-      background: var(--danger);
-    }
-    
-    .btn-sm {
-      padding: 8px 16px;
-      font-size: 0.85rem;
-    }
+    .btn-sm { padding: 6px 12px; font-size: 0.8rem; }
     
     .btn-icon {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       padding: 0;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
     }
     
-    .btn-group {
+    /* TOGGLE BUTTONS para tablas */
+    .toggle-btn-group {
       display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
+      gap: 4px;
+      justify-content: center;
     }
     
-    /* ═══════════════════════════════════════════════════════════════════
-       LISTA DE PACIENTES
-    ═══════════════════════════════════════════════════════════════════ */
+    .toggle-btn {
+      width: 32px;
+      height: 32px;
+      border: 2px solid var(--mint);
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+      color: var(--text-light);
+    }
+    
+    .toggle-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .toggle-btn.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
+    
+    /* PATIENT LIST */
     .search-bar {
       display: flex;
-      gap: 12px;
-      margin-bottom: 20px;
+      gap: 10px;
+      margin-bottom: 16px;
     }
     
-    .search-bar .form-input {
-      flex: 1;
-    }
+    .search-bar .form-input { flex: 1; }
     
-    .patient-list {
-      display: grid;
-      gap: 12px;
-    }
+    .patient-list { display: grid; gap: 10px; }
     
     .patient-item {
       background: var(--cream);
       border-radius: var(--radius-md);
-      padding: 16px 20px;
+      padding: 14px 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.2s;
       border: 2px solid transparent;
     }
     
     .patient-item:hover {
       background: var(--mint-light);
       border-color: var(--primary);
-      transform: translateX(4px);
+      transform: translateX(3px);
     }
     
     .patient-item.selected {
@@ -370,41 +307,33 @@ Fecha: 2026-03-26 15:45 ARG
     }
     
     .patient-info h3 {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--text-dark);
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
     
-    .patient-info span {
-      font-size: 0.85rem;
+    .patient-info p {
+      font-size: 0.8rem;
       color: var(--text-light);
     }
     
-    .patient-actions {
-      display: flex;
-      gap: 8px;
-    }
+    .patient-actions { display: flex; gap: 6px; }
     
-    /* ═══════════════════════════════════════════════════════════════════
-       HISTORIA CLÍNICA - DATOS DEL PACIENTE
-    ═══════════════════════════════════════════════════════════════════ */
+    /* PATIENT HEADER */
     .patient-header {
       background: linear-gradient(135deg, var(--mint) 0%, var(--mint-light) 100%);
       border-radius: var(--radius-lg);
-      padding: 20px;
-      margin-bottom: 20px;
+      padding: 16px;
+      margin-bottom: 16px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
     }
     
-    .patient-header-item {
-      display: flex;
-      flex-direction: column;
-    }
+    .patient-header-item { display: flex; flex-direction: column; }
     
     .patient-header-label {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
       color: var(--primary-dark);
       text-transform: uppercase;
@@ -412,32 +341,31 @@ Fecha: 2026-03-26 15:45 ARG
     }
     
     .patient-header-value {
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       font-weight: 600;
       color: var(--text-dark);
     }
     
-    /* ═══════════════════════════════════════════════════════════════════
-       TABLAS DE EVALUACIÓN
-    ═══════════════════════════════════════════════════════════════════ */
-    .eval-tables {
+    /* EVAL TABLES */
+    .eval-section {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
     }
     
     .eval-table-container {
       background: var(--cream);
       border-radius: var(--radius-md);
-      padding: 16px;
+      padding: 12px;
     }
     
     .eval-table-title {
       font-family: 'Quicksand', sans-serif;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 700;
       color: var(--primary-dark);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       text-align: center;
     }
     
@@ -448,9 +376,9 @@ Fecha: 2026-03-26 15:45 ARG
     
     .eval-table th, .eval-table td {
       border: 2px solid var(--mint);
-      padding: 8px;
+      padding: 6px;
       text-align: center;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
     
     .eval-table th {
@@ -459,341 +387,182 @@ Fecha: 2026-03-26 15:45 ARG
       font-weight: 600;
     }
     
-    .eval-table td {
-      background: var(--white);
-    }
+    .eval-table td { background: var(--white); }
     
-    .eval-table .row-header {
-      background: var(--mint-light);
-      font-weight: 600;
-      color: var(--primary-dark);
-    }
-    
-    .eval-table .result-row td {
-      background: var(--peach);
-    }
-    
-    .eval-cell {
-      width: 40px;
-      height: 40px;
-      border: none;
-      background: transparent;
-      font-family: 'Nunito', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      text-align: center;
-      cursor: pointer;
-      color: var(--primary-dark);
-    }
-    
-    .eval-cell:hover {
-      background: var(--mint-light);
-    }
-    
-    .eval-cell-result {
-      font-size: 1.3rem;
+    .result-cell {
+      background: var(--peach) !important;
       font-weight: 700;
       color: var(--danger);
+      font-size: 1rem;
     }
     
-    /* ═══════════════════════════════════════════════════════════════════
-       ESPINOGRAMA
-    ═══════════════════════════════════════════════════════════════════ */
+    /* ESPINOGRAMA - COMPACTO */
+    .espinograma-section {
+      background: var(--cream);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      margin-bottom: 16px;
+    }
+    
     .espinograma-container {
       display: grid;
-      grid-template-columns: 1fr 300px;
-      gap: 24px;
+      grid-template-columns: 70px 1fr;
+      gap: 12px;
       align-items: start;
     }
     
-    @media (max-width: 768px) {
-      .espinograma-container {
-        grid-template-columns: 1fr;
-      }
-    }
-    
     .spine-svg-container {
-      background: var(--cream);
-      border-radius: var(--radius-lg);
-      padding: 20px;
       display: flex;
       justify-content: center;
-      align-items: center;
-      min-height: 400px;
     }
     
-    .spine-svg {
-      max-width: 100%;
-      height: auto;
+    .spine-svg-container svg {
+      max-height: 140px;
+      width: auto;
     }
     
-    .spine-options {
-      background: var(--cream);
-      border-radius: var(--radius-lg);
-      padding: 20px;
+    .patologias-panel {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 4px;
     }
     
-    .spine-option {
+    .patologia-item {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 12px;
+      gap: 5px;
+      padding: 5px 7px;
+      background: var(--white);
       border-radius: var(--radius-sm);
       cursor: pointer;
-      transition: all 0.2s ease;
-      margin-bottom: 8px;
+      transition: all 0.2s;
+      font-size: 0.7rem;
     }
     
-    .spine-option:hover {
-      background: var(--mint-light);
-    }
+    .patologia-item:hover { background: var(--mint-light); }
+    .patologia-item.active { background: var(--primary); color: white; }
     
-    .spine-option input[type="checkbox"] {
-      width: 20px;
-      height: 20px;
+    .patologia-item input[type="checkbox"] {
+      width: 14px;
+      height: 14px;
       accent-color: var(--primary);
     }
     
-    .spine-option label {
-      font-size: 0.95rem;
-      font-weight: 500;
-      cursor: pointer;
-      flex: 1;
+    /* CONSULTAS */
+    .consulta-card {
+      background: var(--cream);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      margin-bottom: 10px;
+      border-left: 4px solid var(--primary);
     }
     
-    /* ═══════════════════════════════════════════════════════════════════
-       ÓRDENES
-    ═══════════════════════════════════════════════════════════════════ */
+    .consulta-card .fecha {
+      font-weight: 700;
+      color: var(--primary-dark);
+      font-size: 0.9rem;
+    }
+    
+    .consulta-card .motivo {
+      font-size: 0.85rem;
+      color: var(--text-dark);
+      margin: 6px 0;
+    }
+    
+    /* ORDENES */
     .orden-card {
       background: var(--cream);
       border-radius: var(--radius-md);
-      padding: 16px;
-      margin-bottom: 12px;
-      border-left: 4px solid var(--primary);
+      padding: 14px;
+      margin-bottom: 10px;
+      border-left: 4px solid var(--secondary);
     }
     
     .orden-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     
-    .orden-fecha {
-      font-weight: 600;
-      color: var(--text-dark);
-    }
-    
-    .orden-progress {
+    .orden-progress-container {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     
     .orden-progress-bar {
       flex: 1;
-      height: 12px;
+      height: 10px;
       background: var(--mint-light);
-      border-radius: 6px;
+      border-radius: 5px;
       overflow: hidden;
     }
     
     .orden-progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--primary) 0%, var(--success) 100%);
-      transition: width 0.3s ease;
-    }
-    
-    .orden-progress-text {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-medium);
-      white-space: nowrap;
+      background: var(--primary);
+      transition: width 0.3s;
     }
     
     .orden-controls {
       display: flex;
-      gap: 8px;
       align-items: center;
+      gap: 8px;
     }
     
-    .orden-btn {
-      width: 32px;
-      height: 32px;
+    .orden-controls button {
+      width: 28px;
+      height: 28px;
       border: none;
       border-radius: 50%;
-      font-size: 1.2rem;
+      font-size: 1rem;
+      font-weight: 700;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
+      transition: all 0.2s;
     }
     
-    .orden-btn-minus {
-      background: var(--coral);
-      color: var(--white);
-    }
-    
-    .orden-btn-plus {
-      background: var(--primary);
-      color: var(--white);
-    }
-    
-    .orden-btn:hover {
-      transform: scale(1.1);
-    }
+    .orden-controls .btn-minus { background: var(--coral); color: white; }
+    .orden-controls .btn-plus { background: var(--success); color: white; }
+    .orden-controls .btn-minus:hover { background: var(--danger); }
+    .orden-controls .btn-plus:hover { background: var(--primary); }
     
     .orden-count {
-      font-size: 1.1rem;
       font-weight: 700;
-      min-width: 40px;
+      min-width: 60px;
       text-align: center;
     }
     
-    /* ═══════════════════════════════════════════════════════════════════
-       CONSULTAS
-    ═══════════════════════════════════════════════════════════════════ */
-    .consulta-item {
-      background: var(--cream);
-      border-radius: var(--radius-md);
-      padding: 16px;
-      margin-bottom: 12px;
-      border-left: 4px solid var(--secondary);
-    }
-    
-    .consulta-fecha {
-      font-size: 0.85rem;
-      color: var(--text-light);
-      margin-bottom: 8px;
-    }
-    
-    .consulta-motivo {
-      font-weight: 600;
-      color: var(--text-dark);
-      margin-bottom: 4px;
-    }
-    
-    .consulta-obs {
-      font-size: 0.9rem;
-      color: var(--text-medium);
-    }
-    
-    /* ═══════════════════════════════════════════════════════════════════
-       LOADING & TOAST
-    ═══════════════════════════════════════════════════════════════════ */
-    .loading-overlay {
+    /* MODAL */
+    .modal-backdrop {
       position: fixed;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(255,255,255,0.9);
-      display: flex;
-      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 200;
+      display: none;
       align-items: center;
       justify-content: center;
-      z-index: 1000;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
+      padding: 20px;
     }
     
-    .loading-overlay.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-    
-    .loading-spinner {
-      width: 60px;
-      height: 60px;
-      border: 4px solid var(--mint-light);
-      border-top-color: var(--primary);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-    
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-    
-    .loading-text {
-      margin-top: 16px;
-      font-size: 1.1rem;
-      color: var(--text-medium);
-    }
-    
-    .toast {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      padding: 16px 24px;
-      border-radius: var(--radius-md);
-      color: var(--white);
-      font-weight: 600;
-      box-shadow: var(--shadow-lg);
-      transform: translateY(100px);
-      opacity: 0;
-      transition: all 0.3s ease;
-      z-index: 1001;
-    }
-    
-    .toast.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    
-    .toast.success {
-      background: var(--success);
-    }
-    
-    .toast.error {
-      background: var(--danger);
-    }
-    
-    /* ═══════════════════════════════════════════════════════════════════
-       MODAL
-    ═══════════════════════════════════════════════════════════════════ */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      padding: 24px;
-    }
-    
-    .modal-overlay.active {
-      opacity: 1;
-      pointer-events: all;
-    }
+    .modal-backdrop.active { display: flex; }
     
     .modal {
       background: var(--white);
       border-radius: var(--radius-lg);
-      max-width: 600px;
       width: 100%;
+      max-width: 500px;
       max-height: 90vh;
       overflow-y: auto;
-      transform: scale(0.9);
-      transition: transform 0.3s ease;
-    }
-    
-    .modal-overlay.active .modal {
-      transform: scale(1);
+      box-shadow: var(--shadow-lg);
     }
     
     .modal-header {
-      padding: 20px 24px;
-      border-bottom: 2px solid var(--mint-light);
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--mint);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -801,87 +570,135 @@ Fecha: 2026-03-26 15:45 ARG
     
     .modal-title {
       font-family: 'Quicksand', sans-serif;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--primary-dark);
     }
     
     .modal-close {
-      width: 36px;
-      height: 36px;
+      width: 30px;
+      height: 30px;
       border: none;
       background: var(--cream);
       border-radius: 50%;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-medium);
-      transition: all 0.2s ease;
     }
     
-    .modal-close:hover {
-      background: var(--coral);
-      color: var(--white);
-    }
+    .modal-close:hover { background: var(--coral); color: white; }
     
-    .modal-body {
-      padding: 24px;
-    }
+    .modal-body { padding: 20px; }
     
     .modal-footer {
-      padding: 16px 24px;
-      border-top: 2px solid var(--mint-light);
+      padding: 16px 20px;
+      border-top: 1px solid var(--mint);
       display: flex;
       justify-content: flex-end;
-      gap: 12px;
+      gap: 10px;
     }
     
-    /* ═══════════════════════════════════════════════════════════════════
-       RESPONSIVE
-    ═══════════════════════════════════════════════════════════════════ */
-    @media (max-width: 768px) {
-      .header {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-      }
-      
-      .nav-tabs {
-        padding: 12px;
-      }
-      
-      .nav-tab {
-        padding: 10px 16px;
-        font-size: 0.85rem;
-      }
-      
-      .main-container {
-        padding: 16px;
-      }
-      
-      .patient-header {
-        grid-template-columns: 1fr 1fr;
-      }
-      
-      .eval-tables {
-        grid-template-columns: 1fr;
-      }
+    /* STATUS POPUP */
+    .status-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 300;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .status-backdrop.active { display: flex; }
+    
+    .status-popup {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 30px 40px;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      animation: pulse 1.5s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    
+    .status-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid var(--mint);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .status-text {
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 1rem;
+    }
+    
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      z-index: 400;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s;
+    }
+    
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.success { background: var(--success); color: white; }
+    .toast.error { background: var(--danger); color: white; }
+    
+    /* AUTOSAVE INDICATOR */
+    .autosave-indicator {
+      position: fixed;
+      top: 70px;
+      right: 20px;
+      background: var(--success);
+      color: white;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 150;
+    }
+    
+    .autosave-indicator.show { opacity: 1; }
+    
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .header { flex-direction: column; gap: 10px; }
+      .nav-tabs { width: 100%; justify-content: center; }
+      .espinograma-container { grid-template-columns: 1fr; }
+      .spine-svg-container svg { max-height: 100px; }
+      .form-row { grid-template-columns: 1fr; }
+      .patient-header { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
-  <!-- Loading Overlay -->
-  <div class="loading-overlay" id="loadingOverlay">
-    <div class="loading-spinner"></div>
-    <div class="loading-text">Cargando...</div>
-  </div>
-  
-  <!-- Toast -->
-  <div class="toast" id="toast"></div>
-  
-  <!-- Header -->
+  <!-- HEADER -->
   <header class="header">
     <div class="logo">
       <div class="logo-icon">🦴</div>
@@ -890,412 +707,245 @@ Fecha: 2026-03-26 15:45 ARG
         <span>Lic. Enrique Naveira</span>
       </div>
     </div>
+    <nav class="nav-tabs">
+      <button class="nav-tab active" data-section="pacientes">Pacientes</button>
+      <button class="nav-tab" data-section="historia" disabled>Historia</button>
+      <button class="nav-tab" data-section="consultas" disabled>Consultas</button>
+      <button class="nav-tab" data-section="ordenes" disabled>Órdenes</button>
+    </nav>
   </header>
   
-  <!-- Navigation -->
-  <nav class="nav-tabs">
-    <button class="nav-tab active" data-section="pacientes">
-      <span class="nav-tab-icon">👥</span>
-      Pacientes
-    </button>
-    <button class="nav-tab" data-section="historia" id="tabHistoria" style="display:none;">
-      <span class="nav-tab-icon">📋</span>
-      Historia Clínica
-    </button>
-    <button class="nav-tab" data-section="consultas" id="tabConsultas" style="display:none;">
-      <span class="nav-tab-icon">🩺</span>
-      Consultas
-    </button>
-    <button class="nav-tab" data-section="ordenes" id="tabOrdenes" style="display:none;">
-      <span class="nav-tab-icon">📄</span>
-      Órdenes
-    </button>
-  </nav>
-  
-  <!-- Main Container -->
-  <main class="main-container">
-    
-    <!-- SECCIÓN: PACIENTES -->
-    <section class="section active" id="secPacientes">
+  <main class="main">
+    <!-- SECCIÓN PACIENTES -->
+    <section id="secPacientes" class="section active">
       <div class="card">
         <div class="card-header">
-          <h2 class="card-title">
-            <span>👥</span>
-            Lista de Pacientes
-          </h2>
-          <button class="btn btn-primary" onclick="openPacienteModal()">
-            <span>➕</span>
-            Nuevo Paciente
-          </button>
+          <h2 class="card-title">Pacientes</h2>
+          <button class="btn btn-primary" onclick="openNewPaciente()">+ Nuevo Paciente</button>
         </div>
-        
         <div class="search-bar">
-          <input type="text" class="form-input" id="searchPaciente" placeholder="🔍 Buscar paciente..." oninput="filterPacientes()">
+          <input type="text" class="form-input" id="searchPaciente" placeholder="Buscar por apellido o teléfono..." oninput="renderPacientes()">
         </div>
-        
-        <div class="patient-list" id="patientList">
-          <!-- Se llena dinámicamente -->
-        </div>
+        <div class="patient-list" id="patientList"></div>
       </div>
     </section>
     
-    <!-- SECCIÓN: HISTORIA CLÍNICA -->
-    <section class="section" id="secHistoria">
-      <!-- Header del paciente -->
-      <div class="patient-header" id="patientHeaderHC">
-        <!-- Se llena dinámicamente -->
-      </div>
+    <!-- SECCIÓN HISTORIA CLÍNICA -->
+    <section id="secHistoria" class="section">
+      <div id="patientHeaderHC" class="patient-header"></div>
       
       <div class="card">
-        <div class="card-header">
-          <h2 class="card-title">
-            <span>📋</span>
-            Historia Clínica
-          </h2>
-          <button class="btn btn-primary" onclick="saveHistoriaClinica()">
-            <span>💾</span>
-            Guardar Historia
-          </button>
-        </div>
+        <h2 class="card-title" style="margin-bottom:16px">Historia Clínica</h2>
         
-        <!-- Diagnóstico y EC -->
-        <div class="form-grid" style="margin-bottom: 24px;">
+        <div class="form-row">
           <div class="form-group">
             <label class="form-label">Dx (Diagnóstico)</label>
-            <textarea class="form-textarea" id="hcDx" rows="3"></textarea>
+            <textarea class="form-textarea" id="hcDx" rows="2" onchange="autoSaveHC()"></textarea>
           </div>
           <div class="form-group">
             <label class="form-label">E.C. (Exámenes Complementarios)</label>
-            <textarea class="form-textarea" id="hcEc" rows="3"></textarea>
+            <textarea class="form-textarea" id="hcEc" rows="2" onchange="autoSaveHC()"></textarea>
           </div>
         </div>
+      </div>
+      
+      <!-- TABLAS DE EVALUACIÓN -->
+      <div class="eval-section">
+        <div class="eval-table-container">
+          <div class="eval-table-title">Evaluación Postural (A/P)</div>
+          <table class="eval-table" id="tablaVertical">
+            <thead>
+              <tr><th>#</th><th>A</th><th>P</th><th>R</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
         
-        <!-- Tablas de Evaluación -->
-        <div class="eval-tables">
-          <!-- Tabla Vertical (A/P) -->
-          <div class="eval-table-container">
-            <h3 class="eval-table-title">Evaluación Postural (A/P)</h3>
-            <table class="eval-table" id="tablaVertical">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>A</th>
-                  <th>P</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td class="row-header">1</td><td><input type="text" class="eval-cell" data-row="0" data-col="a" maxlength="1"></td><td><input type="text" class="eval-cell" data-row="0" data-col="p" maxlength="1"></td></tr>
-                <tr><td class="row-header">2</td><td><input type="text" class="eval-cell" data-row="1" data-col="a" maxlength="1"></td><td><input type="text" class="eval-cell" data-row="1" data-col="p" maxlength="1"></td></tr>
-                <tr><td class="row-header">3</td><td><input type="text" class="eval-cell" data-row="2" data-col="a" maxlength="1"></td><td><input type="text" class="eval-cell" data-row="2" data-col="p" maxlength="1"></td></tr>
-                <tr><td class="row-header">4</td><td><input type="text" class="eval-cell" data-row="3" data-col="a" maxlength="1"></td><td><input type="text" class="eval-cell" data-row="3" data-col="p" maxlength="1"></td></tr>
-                <tr><td class="row-header">5</td><td><input type="text" class="eval-cell" data-row="4" data-col="a" maxlength="1"></td><td><input type="text" class="eval-cell" data-row="4" data-col="p" maxlength="1"></td></tr>
-                <tr><td class="row-header">6</td><td><input type="text" class="eval-cell" data-row="5" data-col="a" maxlength="1"></td><td><input type="text" class="eval-cell" data-row="5" data-col="p" maxlength="1"></td></tr>
-                <tr class="result-row"><td class="row-header">R</td><td><span class="eval-cell-result" id="resVerticalA"></span></td><td><span class="eval-cell-result" id="resVerticalP"></span></td></tr>
-              </tbody>
-            </table>
-            <p style="font-size:0.8rem; color:var(--text-light); margin-top:8px; text-align:center;">
-              Marcar con + o dejar vacío. R muestra + en columna con más positivos, = si empatan.
-            </p>
+        <div class="eval-table-container">
+          <div class="eval-table-title">Evaluación Funcional</div>
+          <table class="eval-table" id="tablaHorizontal">
+            <thead>
+              <tr><th></th><th>FGRAL</th><th>INTERR</th><th>REEQ</th><th>EXLR</th><th>R</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- ESPINOGRAMA -->
+      <div class="espinograma-section">
+        <h3 class="card-title" style="margin-bottom:10px;font-size:1rem">Espinograma</h3>
+        <div class="espinograma-container">
+          <div class="spine-svg-container">
+            <svg id="spineSvg" viewBox="0 0 50 180" xmlns="http://www.w3.org/2000/svg">
+              <g id="spineBase" fill="#e0e0e0" stroke="#999" stroke-width="0.4">
+                <!-- Cervicales C1-C7 -->
+                <ellipse cx="25" cy="8" rx="6" ry="2.5"/>
+                <ellipse cx="25" cy="13" rx="7" ry="2.5"/>
+                <ellipse cx="25" cy="18" rx="7" ry="2.5"/>
+                <ellipse cx="25" cy="23" rx="8" ry="2.5"/>
+                <ellipse cx="25" cy="28" rx="8" ry="2.5"/>
+                <ellipse cx="25" cy="33" rx="8" ry="2.5"/>
+                <ellipse cx="25" cy="38" rx="8" ry="2.5"/>
+                <!-- Dorsales T1-T12 -->
+                <ellipse cx="25" cy="45" rx="9" ry="3"/>
+                <ellipse cx="25" cy="51" rx="9" ry="3"/>
+                <ellipse cx="25" cy="57" rx="10" ry="3"/>
+                <ellipse cx="25" cy="63" rx="10" ry="3"/>
+                <ellipse cx="25" cy="69" rx="10" ry="3"/>
+                <ellipse cx="25" cy="75" rx="10" ry="3"/>
+                <ellipse cx="25" cy="81" rx="11" ry="3"/>
+                <ellipse cx="25" cy="87" rx="11" ry="3"/>
+                <ellipse cx="25" cy="93" rx="11" ry="3"/>
+                <ellipse cx="25" cy="99" rx="12" ry="3"/>
+                <ellipse cx="25" cy="105" rx="12" ry="3"/>
+                <ellipse cx="25" cy="111" rx="12" ry="3"/>
+                <!-- Lumbares L1-L5 -->
+                <ellipse cx="25" cy="119" rx="13" ry="3.5"/>
+                <ellipse cx="25" cy="127" rx="13" ry="3.5"/>
+                <ellipse cx="25" cy="135" rx="14" ry="3.5"/>
+                <ellipse cx="25" cy="143" rx="14" ry="3.5"/>
+                <ellipse cx="25" cy="151" rx="14" ry="3.5"/>
+                <!-- Sacro -->
+                <path d="M11 156 Q25 172 39 156 L37 166 Q25 175 13 166 Z" fill="#d0d0d0"/>
+              </g>
+              
+              <!-- Patologías -->
+              <g id="escoliosisDer" class="patologia" style="display:none">
+                <path d="M25 15 Q38 60 30 105 Q22 140 25 155" fill="none" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="2,1"/>
+              </g>
+              <g id="escoliosisIzq" class="patologia" style="display:none">
+                <path d="M25 15 Q12 60 20 105 Q28 140 25 155" fill="none" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="2,1"/>
+              </g>
+              <g id="cifosis" class="patologia" style="display:none">
+                <path d="M38 45 Q46 78 38 111" fill="none" stroke="#9b59b6" stroke-width="2"/>
+              </g>
+              <g id="lordosisCerv" class="patologia" style="display:none">
+                <path d="M34 8 Q40 22 34 38" fill="none" stroke="#3498db" stroke-width="2"/>
+              </g>
+              <g id="lordosisLumb" class="patologia" style="display:none">
+                <path d="M38 119 Q45 135 38 151" fill="none" stroke="#3498db" stroke-width="2"/>
+              </g>
+              <g id="rectifCerv" class="patologia" style="display:none">
+                <line x1="25" y1="5" x2="25" y2="40" stroke="#f39c12" stroke-width="2"/>
+              </g>
+              <g id="rectifLumb" class="patologia" style="display:none">
+                <line x1="25" y1="116" x2="25" y2="154" stroke="#f39c12" stroke-width="2"/>
+              </g>
+              
+              <!-- Labels -->
+              <text x="2" y="23" font-size="5" fill="#666">C</text>
+              <text x="2" y="78" font-size="5" fill="#666">T</text>
+              <text x="2" y="135" font-size="5" fill="#666">L</text>
+              <text x="2" y="168" font-size="5" fill="#666">S</text>
+            </svg>
           </div>
           
-          <!-- Tabla Horizontal (Evaluación Funcional) -->
-          <div class="eval-table-container">
-            <h3 class="eval-table-title">Evaluación Funcional</h3>
-            <table class="eval-table" id="tablaHorizontal">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>FGRAL</th>
-                  <th>INTERR</th>
-                  <th>REEQ</th>
-                  <th>EXLR</th>
-                  <th>R</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="row-header">1 ACFBC</td>
-                  <td><input type="text" class="eval-cell" data-row="0" data-col="fgral" maxlength="1"></td>
-                  <td><input type="text" class="eval-cell" data-row="0" data-col="interr" maxlength="1"></td>
-                  <td><input type="text" class="eval-cell" data-row="0" data-col="reeq" maxlength="1"></td>
-                  <td><input type="text" class="eval-cell" data-row="0" data-col="exlr" maxlength="1"></td>
-                  <td><span class="eval-cell-result" data-result-row="0"></span></td>
-                </tr>
-                <tr>
-                  <td class="row-header">2 BA</td>
-                  <td><input type="text" class="eval-cell" data-row="1" data-col="fgral" maxlength="1"></td>
-                  <td><input type="text" class="eval-cell" data-row="1" data-col="interr" maxlength="1"></td>
-                  <td><input type="text" class="eval-cell" data-row="1" data-col="reeq" maxlength="1"></td>
-                  <td><input type="text" class="eval-cell" data-row="1" data-col="exlr" maxlength="1"></td>
-                  <td><span class="eval-cell-result" data-result-row="1"></span></td>
-                </tr>
-                <tr>
-                  <td class="row-header">3 CCFBC</td>
-                  <td><input type="text" class="eval-cell" data-row="2" data-col="fgral" maxlength="1"></td>
-                  <td><input type="text" class="eval-cell" data-row="2" data-col="interr" maxlength="1"></td>
-                  <td><input type="text" class="eval-cell" data-row="2" data-col="reeq" maxlength="1"></td>
-                  <td><input type="text" class="eval-cell" data-row="2" data-col="exlr" maxlength="1"></td>
-                  <td><span class="eval-cell-result" data-result-row="2"></span></td>
-                </tr>
-                <tr>
-                  <td class="row-header">4 BA</td>
-                  <td><input type="text" class="eval-cell" data-row="3" data-col="fgral" maxlength="1"></td>
-                  <td><input type="text" class="eval-cell" data-row="3" data-col="interr" maxlength="1"></td>
-                  <td><input type="text" class="eval-cell" data-row="3" data-col="reeq" maxlength="1"></td>
-                  <td><input type="text" class="eval-cell" data-row="3" data-col="exlr" maxlength="1"></td>
-                  <td><span class="eval-cell-result" data-result-row="3"></span></td>
-                </tr>
-              </tbody>
-            </table>
-            <p style="font-size:0.8rem; color:var(--text-light); margin-top:8px; text-align:center;">
-              Marcar con + o 0. R marca + en la fila con mayor cantidad de positivos.
-            </p>
+          <div class="patologias-panel">
+            <label class="patologia-item">
+              <input type="checkbox" id="chkEscoliosisDer" onchange="togglePatologia('escoliosisDer')"> Escoliosis Der.
+            </label>
+            <label class="patologia-item">
+              <input type="checkbox" id="chkEscoliosisIzq" onchange="togglePatologia('escoliosisIzq')"> Escoliosis Izq.
+            </label>
+            <label class="patologia-item">
+              <input type="checkbox" id="chkCifosis" onchange="togglePatologia('cifosis')"> Cifosis
+            </label>
+            <label class="patologia-item">
+              <input type="checkbox" id="chkLordosisCerv" onchange="togglePatologia('lordosisCerv')"> Lordosis Cerv.
+            </label>
+            <label class="patologia-item">
+              <input type="checkbox" id="chkLordosisLumb" onchange="togglePatologia('lordosisLumb')"> Lordosis Lumb.
+            </label>
+            <label class="patologia-item">
+              <input type="checkbox" id="chkRectifCerv" onchange="togglePatologia('rectifCerv')"> Rectif. Cervical
+            </label>
+            <label class="patologia-item">
+              <input type="checkbox" id="chkRectifLumb" onchange="togglePatologia('rectifLumb')"> Rectif. Lumbar
+            </label>
           </div>
         </div>
         
-        <!-- Espinograma -->
-        <div style="margin-top: 24px;">
-          <h3 class="card-title" style="margin-bottom: 16px;">
-            <span>🦴</span>
-            Espinograma
-          </h3>
-          
-          <div class="espinograma-container">
-            <div class="spine-svg-container">
-              <svg id="spineSvg" viewBox="0 0 200 450" class="spine-svg">
-                <!-- Columna vertebral base -->
-                <defs>
-                  <linearGradient id="spineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" style="stop-color:#e8f5e9"/>
-                    <stop offset="50%" style="stop-color:#c8e6c9"/>
-                    <stop offset="100%" style="stop-color:#e8f5e9"/>
-                  </linearGradient>
-                </defs>
-                
-                <!-- Etiquetas de regiones -->
-                <text x="170" y="50" font-size="12" fill="#449981" font-weight="600">CERVICAL</text>
-                <text x="170" y="150" font-size="12" fill="#449981" font-weight="600">DORSAL</text>
-                <text x="170" y="320" font-size="12" fill="#449981" font-weight="600">LUMBAR</text>
-                <text x="170" y="400" font-size="12" fill="#449981" font-weight="600">SACRO</text>
-                
-                <!-- Columna normal (se modifica con las patologías) -->
-                <g id="spineColumn">
-                  <!-- Vértebras cervicales C1-C7 -->
-                  <ellipse cx="100" cy="25" rx="18" ry="8" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="40" rx="20" ry="8" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="55" rx="21" ry="8" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="70" rx="22" ry="8" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="85" rx="23" ry="8" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="100" rx="24" ry="9" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="115" rx="25" ry="9" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  
-                  <!-- Vértebras dorsales T1-T12 -->
-                  <ellipse cx="100" cy="135" rx="26" ry="10" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="152" rx="27" ry="10" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="169" rx="28" ry="10" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="186" rx="28" ry="10" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="203" rx="28" ry="10" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="220" rx="28" ry="10" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="237" rx="28" ry="10" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="254" rx="28" ry="10" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="271" rx="27" ry="10" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="288" rx="27" ry="10" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="305" rx="28" ry="10" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="322" rx="29" ry="10" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  
-                  <!-- Vértebras lumbares L1-L5 -->
-                  <ellipse cx="100" cy="342" rx="32" ry="12" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="362" rx="33" ry="12" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="382" rx="34" ry="12" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="402" rx="33" ry="11" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  <ellipse cx="100" cy="420" rx="32" ry="10" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                  
-                  <!-- Sacro -->
-                  <path d="M70 432 Q100 435 130 432 L125 445 Q100 450 75 445 Z" fill="url(#spineGradient)" stroke="#5fb49c" stroke-width="2"/>
-                </g>
-                
-                <!-- Línea de referencia central -->
-                <line x1="100" y1="15" x2="100" y2="445" stroke="#ddd" stroke-width="1" stroke-dasharray="4"/>
-                
-                <!-- Curvaturas patológicas (se muestran según selección) -->
-                <g id="pathologies">
-                  <!-- Escoliosis derecha (curva hacia la derecha) -->
-                  <path id="pathEscoliosisDer" d="M100 130 Q130 200 115 280 Q100 340 100 380" 
-                        stroke="#ef476f" stroke-width="3" fill="none" stroke-dasharray="6" style="display:none"/>
-                  
-                  <!-- Escoliosis izquierda (curva hacia la izquierda) -->
-                  <path id="pathEscoliosisIzq" d="M100 130 Q70 200 85 280 Q100 340 100 380" 
-                        stroke="#ef476f" stroke-width="3" fill="none" stroke-dasharray="6" style="display:none"/>
-                  
-                  <!-- Cifosis (curvatura hacia adelante dorsal) -->
-                  <path id="pathCifosis" d="M100 130 C120 180 120 220 100 280" 
-                        stroke="#f7b267" stroke-width="3" fill="none" stroke-dasharray="6" style="display:none"/>
-                  
-                  <!-- Lordosis (curvatura hacia atrás lumbar) -->
-                  <path id="pathLordosis" d="M100 320 C80 360 80 400 100 430" 
-                        stroke="#9b59b6" stroke-width="3" fill="none" stroke-dasharray="6" style="display:none"/>
-                  
-                  <!-- Rectificación cervical -->
-                  <rect id="pathRectCervical" x="85" y="20" width="30" height="90" 
-                        fill="rgba(255,107,107,0.2)" stroke="#ff6b6b" stroke-width="2" style="display:none"/>
-                  
-                  <!-- Rectificación lumbar -->
-                  <rect id="pathRectLumbar" x="75" y="330" width="50" height="100" 
-                        fill="rgba(255,107,107,0.2)" stroke="#ff6b6b" stroke-width="2" style="display:none"/>
-                  
-                  <!-- Hiperlordosis -->
-                  <path id="pathHiperlordosis" d="M100 320 C60 360 55 400 100 440" 
-                        stroke="#e74c3c" stroke-width="4" fill="none" stroke-dasharray="6" style="display:none"/>
-                  
-                  <!-- Hipercifosis -->
-                  <path id="pathHipercifosis" d="M100 130 C140 180 145 240 100 300" 
-                        stroke="#e74c3c" stroke-width="4" fill="none" stroke-dasharray="6" style="display:none"/>
-                </g>
-              </svg>
-            </div>
-            
-            <div class="spine-options">
-              <h4 style="margin-bottom: 16px; color: var(--primary-dark);">Seleccionar patologías:</h4>
-              
-              <div class="spine-option">
-                <input type="checkbox" id="chkEscoliosisDer" onchange="updateSpineSvg()">
-                <label for="chkEscoliosisDer">Escoliosis Derecha</label>
-              </div>
-              
-              <div class="spine-option">
-                <input type="checkbox" id="chkEscoliosisIzq" onchange="updateSpineSvg()">
-                <label for="chkEscoliosisIzq">Escoliosis Izquierda</label>
-              </div>
-              
-              <div class="spine-option">
-                <input type="checkbox" id="chkCifosis" onchange="updateSpineSvg()">
-                <label for="chkCifosis">Cifosis (Dorsal)</label>
-              </div>
-              
-              <div class="spine-option">
-                <input type="checkbox" id="chkLordosis" onchange="updateSpineSvg()">
-                <label for="chkLordosis">Lordosis (Lumbar)</label>
-              </div>
-              
-              <div class="spine-option">
-                <input type="checkbox" id="chkRectCervical" onchange="updateSpineSvg()">
-                <label for="chkRectCervical">Rectificación Cervical</label>
-              </div>
-              
-              <div class="spine-option">
-                <input type="checkbox" id="chkRectLumbar" onchange="updateSpineSvg()">
-                <label for="chkRectLumbar">Rectificación Lumbar</label>
-              </div>
-              
-              <div class="spine-option">
-                <input type="checkbox" id="chkHiperlordosis" onchange="updateSpineSvg()">
-                <label for="chkHiperlordosis">Hiperlordosis</label>
-              </div>
-              
-              <div class="spine-option">
-                <input type="checkbox" id="chkHipercifosis" onchange="updateSpineSvg()">
-                <label for="chkHipercifosis">Hipercifosis</label>
-              </div>
-              
-              <div class="form-group" style="margin-top: 16px;">
-                <label class="form-label">Notas adicionales</label>
-                <textarea class="form-textarea" id="espinogramaNotas" rows="3" placeholder="Observaciones sobre la postura..."></textarea>
-              </div>
-            </div>
-          </div>
+        <div class="form-group" style="margin-top:10px">
+          <label class="form-label">Notas del Espinograma</label>
+          <textarea class="form-textarea" id="hcEspinogramaNotes" rows="2" onchange="autoSaveHC()"></textarea>
         </div>
-        
-        <!-- Notas generales -->
-        <div class="form-group full-width" style="margin-top: 24px;">
-          <label class="form-label">Notas generales de la Historia Clínica</label>
-          <textarea class="form-textarea" id="hcNotas" rows="4" placeholder="Observaciones adicionales..."></textarea>
-        </div>
+      </div>
+      
+      <div style="text-align:right">
+        <button class="btn btn-primary" onclick="saveHistoriaClinica()">💾 Guardar Historia Clínica</button>
       </div>
     </section>
     
-    <!-- SECCIÓN: CONSULTAS -->
-    <section class="section" id="secConsultas">
-      <div class="patient-header" id="patientHeaderConsultas">
-        <!-- Se llena dinámicamente -->
-      </div>
+    <!-- SECCIÓN CONSULTAS -->
+    <section id="secConsultas" class="section">
+      <div id="patientHeaderConsultas" class="patient-header"></div>
       
       <div class="card">
         <div class="card-header">
-          <h2 class="card-title">
-            <span>🩺</span>
-            Consultas
-          </h2>
-          <button class="btn btn-primary" onclick="openConsultaModal()">
-            <span>➕</span>
-            Nueva Consulta
-          </button>
+          <h2 class="card-title">Consultas</h2>
+          <button class="btn btn-primary" onclick="openNewConsulta()">+ Nueva Consulta</button>
         </div>
-        
-        <div id="consultasList">
-          <!-- Se llena dinámicamente -->
-        </div>
+        <div id="consultasList"></div>
       </div>
     </section>
     
-    <!-- SECCIÓN: ÓRDENES -->
-    <section class="section" id="secOrdenes">
-      <div class="patient-header" id="patientHeaderOrdenes">
-        <!-- Se llena dinámicamente -->
-      </div>
+    <!-- SECCIÓN ÓRDENES -->
+    <section id="secOrdenes" class="section">
+      <div id="patientHeaderOrdenes" class="patient-header"></div>
       
       <div class="card">
         <div class="card-header">
-          <h2 class="card-title">
-            <span>📄</span>
-            Control de Órdenes
-          </h2>
-          <button class="btn btn-primary" onclick="openOrdenModal()">
-            <span>➕</span>
-            Nueva Orden
-          </button>
+          <h2 class="card-title">Órdenes Médicas</h2>
+          <button class="btn btn-primary" onclick="openNewOrden()">+ Nueva Orden</button>
         </div>
-        
-        <div id="ordenesList">
-          <!-- Se llena dinámicamente -->
-        </div>
+        <div id="ordenesList"></div>
       </div>
     </section>
   </main>
   
-  <!-- MODAL: Paciente -->
-  <div class="modal-overlay" id="modalPaciente">
+  <!-- MODAL PACIENTE -->
+  <div class="modal-backdrop" id="modalPaciente">
     <div class="modal">
       <div class="modal-header">
-        <h3 class="modal-title" id="modalPacienteTitle">Nuevo Paciente</h3>
-        <button class="modal-close" onclick="closeModal('modalPaciente')">&times;</button>
+        <h3 class="modal-title">Nuevo Paciente</h3>
+        <button class="modal-close" onclick="closeModal('modalPaciente')">×</button>
       </div>
       <div class="modal-body">
-        <div class="form-grid">
-          <input type="hidden" id="pacienteId">
-          <div class="form-group full-width">
-            <label class="form-label">Apellido y Nombre *</label>
-            <input type="text" class="form-input" id="pacienteNya" required>
-          </div>
-          <div class="form-group full-width">
-            <label class="form-label">Domicilio</label>
-            <input type="text" class="form-input" id="pacienteDomicilio">
-          </div>
+        <input type="hidden" id="pacienteId">
+        <div class="form-group">
+          <label class="form-label">Apellido y Nombre *</label>
+          <input type="text" class="form-input" id="pacienteAyn">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Domicilio</label>
+          <input type="text" class="form-input" id="pacienteDomicilio">
+        </div>
+        <div class="form-row">
           <div class="form-group">
             <label class="form-label">Teléfono</label>
-            <input type="tel" class="form-input" id="pacienteTel">
+            <input type="text" class="form-input" id="pacienteTel">
           </div>
           <div class="form-group">
             <label class="form-label">Ocupación</label>
             <input type="text" class="form-input" id="pacienteOcupacion">
           </div>
+        </div>
+        <div class="form-row">
           <div class="form-group">
             <label class="form-label">Fecha de Nacimiento</label>
-            <input type="date" class="form-input" id="pacienteFechaNac">
+            <div class="date-input-group">
+              <input type="text" class="form-input day" id="pacienteFechaNacDia" maxlength="2" placeholder="DD">
+              <span>/</span>
+              <input type="text" class="form-input month" id="pacienteFechaNacMes" maxlength="2" placeholder="MM">
+              <span>/</span>
+              <input type="text" class="form-input year" id="pacienteFechaNacAnio" maxlength="4" placeholder="AAAA">
+            </div>
           </div>
-          <div class="form-group">
-            <label class="form-label">E.A. (Enfermedad Actual)</label>
-            <textarea class="form-textarea" id="pacienteEa" rows="3"></textarea>
-          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">E.A. (Enfermedad Actual)</label>
+          <textarea class="form-textarea" id="pacienteEa" rows="3"></textarea>
         </div>
       </div>
       <div class="modal-footer">
@@ -1305,31 +955,45 @@ Fecha: 2026-03-26 15:45 ARG
     </div>
   </div>
   
-  <!-- MODAL: Consulta -->
-  <div class="modal-overlay" id="modalConsulta">
+  <!-- MODAL CONSULTA -->
+  <div class="modal-backdrop" id="modalConsulta">
     <div class="modal">
       <div class="modal-header">
         <h3 class="modal-title">Nueva Consulta</h3>
-        <button class="modal-close" onclick="closeModal('modalConsulta')">&times;</button>
+        <button class="modal-close" onclick="closeModal('modalConsulta')">×</button>
       </div>
       <div class="modal-body">
-        <div class="form-grid">
-          <input type="hidden" id="consultaId">
-          <div class="form-group full-width">
-            <label class="form-label">Motivo de consulta *</label>
-            <input type="text" class="form-input" id="consultaMotivo" required>
+        <input type="hidden" id="consultaId">
+        <div class="form-group">
+          <label class="form-label">Fecha</label>
+          <div class="date-input-group">
+            <input type="text" class="form-input day" id="consultaFechaDia" maxlength="2" placeholder="DD">
+            <span>/</span>
+            <input type="text" class="form-input month" id="consultaFechaMes" maxlength="2" placeholder="MM">
+            <span>/</span>
+            <input type="text" class="form-input year" id="consultaFechaAnio" maxlength="4" placeholder="AAAA">
           </div>
-          <div class="form-group full-width">
-            <label class="form-label">Observaciones</label>
-            <textarea class="form-textarea" id="consultaObs" rows="4"></textarea>
-          </div>
-          <div class="form-group full-width">
-            <label class="form-label">Tratamiento realizado</label>
-            <textarea class="form-textarea" id="consultaTratamiento" rows="3"></textarea>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Próxima cita</label>
-            <input type="date" class="form-input" id="consultaProximaCita">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Motivo de Consulta</label>
+          <textarea class="form-textarea" id="consultaMotivo" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Observaciones</label>
+          <textarea class="form-textarea" id="consultaObs" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tratamiento</label>
+          <textarea class="form-textarea" id="consultaTratamiento" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Próxima Cita</label>
+          <div class="date-input-group">
+            <input type="text" class="form-input day" id="consultaProxDia" maxlength="2" placeholder="DD">
+            <span>/</span>
+            <input type="text" class="form-input month" id="consultaProxMes" maxlength="2" placeholder="MM">
+            <span>/</span>
+            <input type="text" class="form-input year" id="consultaProxAnio" maxlength="4" placeholder="AAAA">
           </div>
         </div>
       </div>
@@ -1340,28 +1004,32 @@ Fecha: 2026-03-26 15:45 ARG
     </div>
   </div>
   
-  <!-- MODAL: Orden -->
-  <div class="modal-overlay" id="modalOrden">
+  <!-- MODAL ORDEN -->
+  <div class="modal-backdrop" id="modalOrden">
     <div class="modal">
       <div class="modal-header">
         <h3 class="modal-title">Nueva Orden</h3>
-        <button class="modal-close" onclick="closeModal('modalOrden')">&times;</button>
+        <button class="modal-close" onclick="closeModal('modalOrden')">×</button>
       </div>
       <div class="modal-body">
-        <div class="form-grid">
-          <input type="hidden" id="ordenId">
-          <div class="form-group">
-            <label class="form-label">Fecha de entrega</label>
-            <input type="date" class="form-input" id="ordenFecha">
+        <input type="hidden" id="ordenId">
+        <div class="form-group">
+          <label class="form-label">Fecha</label>
+          <div class="date-input-group">
+            <input type="text" class="form-input day" id="ordenFechaDia" maxlength="2" placeholder="DD">
+            <span>/</span>
+            <input type="text" class="form-input month" id="ordenFechaMes" maxlength="2" placeholder="MM">
+            <span>/</span>
+            <input type="text" class="form-input year" id="ordenFechaAnio" maxlength="4" placeholder="AAAA">
           </div>
-          <div class="form-group">
-            <label class="form-label">Cantidad de órdenes *</label>
-            <input type="number" class="form-input" id="ordenCantidad" min="1" required>
-          </div>
-          <div class="form-group full-width">
-            <label class="form-label">Descripción</label>
-            <input type="text" class="form-input" id="ordenDescripcion" placeholder="Ej: Sesiones de kinesiología, OS OSDE...">
-          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Descripción</label>
+          <input type="text" class="form-input" id="ordenDescripcion" placeholder="Ej: Orden de 10 sesiones">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Cantidad Total</label>
+          <input type="number" class="form-input" id="ordenCantidad" min="1" value="10">
         </div>
       </div>
       <div class="modal-footer">
@@ -1371,17 +1039,37 @@ Fecha: 2026-03-26 15:45 ARG
     </div>
   </div>
   
+  <!-- STATUS POPUP -->
+  <div class="status-backdrop" id="statusBackdrop">
+    <div class="status-popup">
+      <div class="status-spinner"></div>
+      <div class="status-text" id="statusText">Cargando...</div>
+    </div>
+  </div>
+  
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+  
+  <!-- AUTOSAVE INDICATOR -->
+  <div class="autosave-indicator" id="autosaveIndicator">✓ Guardado automático</div>
+
   <script>
     // ═══════════════════════════════════════════════════════════════════════
     // CONFIGURACIÓN
     // ═══════════════════════════════════════════════════════════════════════
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz87uvQ01zehK4XaLp0C-Z_x7H10TIgu1XJsn0TBcCWUkZ_aplILpXBOKuUxFhaCKE/exec';
     const API_SECRET = 'KINESIO2026-NaveiraHC';
+    const CACHE_KEY = 'kinesioHC_cache';
+    const AUTOSAVE_KEY = 'kinesioHC_autosave';
     
-    // Estado de la aplicación
+    // Estado
     let pacientes = [];
     let selectedPaciente = null;
     let historiaActual = null;
+    let consultasActuales = [];
+    let ordenesActuales = [];
+    let evalDataVertical = {};
+    let evalDataHorizontal = {};
     
     // ═══════════════════════════════════════════════════════════════════════
     // INICIALIZACIÓN
@@ -1389,29 +1077,28 @@ Fecha: 2026-03-26 15:45 ARG
     document.addEventListener('DOMContentLoaded', () => {
       initNavigation();
       initEvalTables();
+      initDateInputs();
+      loadFromCache();
       loadPacientes();
     });
     
     function initNavigation() {
       document.querySelectorAll('.nav-tab').forEach(tab => {
         tab.addEventListener('click', () => {
+          if (tab.disabled) return;
           const section = tab.dataset.section;
           
-          // Si intenta ir a una sección que requiere paciente
           if (['historia', 'consultas', 'ordenes'].includes(section) && !selectedPaciente) {
             showToast('Primero seleccione un paciente', 'error');
             return;
           }
           
-          // Activar tab
           document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
           tab.classList.add('active');
           
-          // Mostrar sección
           document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
           document.getElementById('sec' + section.charAt(0).toUpperCase() + section.slice(1)).classList.add('active');
           
-          // Cargar datos según sección
           if (section === 'historia') loadHistoriaClinica();
           if (section === 'consultas') loadConsultas();
           if (section === 'ordenes') loadOrdenes();
@@ -1419,60 +1106,217 @@ Fecha: 2026-03-26 15:45 ARG
       });
     }
     
-    function initEvalTables() {
-      // Tabla Vertical - detectar cambios
-      document.querySelectorAll('#tablaVertical .eval-cell').forEach(cell => {
-        cell.addEventListener('input', (e) => {
-          // Solo permitir + o vacío
-          if (e.target.value && e.target.value !== '+') {
-            e.target.value = '+';
+    function initDateInputs() {
+      document.querySelectorAll('.date-input-group input').forEach(input => {
+        input.addEventListener('input', (e) => {
+          const val = e.target.value.replace(/\D/g, '');
+          e.target.value = val;
+          
+          const max = e.target.classList.contains('year') ? 4 : 2;
+          if (val.length >= max) {
+            const next = e.target.nextElementSibling?.nextElementSibling;
+            if (next && next.tagName === 'INPUT') next.focus();
           }
-          calcularResultadoVertical();
-        });
-      });
-      
-      // Tabla Horizontal - detectar cambios
-      document.querySelectorAll('#tablaHorizontal .eval-cell').forEach(cell => {
-        cell.addEventListener('input', (e) => {
-          // Solo permitir + o 0
-          const val = e.target.value.toLowerCase();
-          if (val && val !== '+' && val !== '0') {
-            e.target.value = '';
-          }
-          calcularResultadoHorizontal();
         });
       });
     }
     
+    function initEvalTables() {
+      // Tabla Vertical (A/P) - 6 filas + R
+      const tbodyV = document.querySelector('#tablaVertical tbody');
+      for (let i = 1; i <= 6; i++) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${i}</strong></td>
+          <td>
+            <div class="toggle-btn-group">
+              <button class="toggle-btn" onclick="toggleEval(this, 'v', ${i}, 'A')" data-row="${i}" data-col="A">+</button>
+            </div>
+          </td>
+          <td>
+            <div class="toggle-btn-group">
+              <button class="toggle-btn" onclick="toggleEval(this, 'v', ${i}, 'P')" data-row="${i}" data-col="P">+</button>
+            </div>
+          </td>
+          <td class="result-cell" id="resV${i}">-</td>
+        `;
+        tbodyV.appendChild(tr);
+      }
+      const trR = document.createElement('tr');
+      trR.innerHTML = `<td><strong>R</strong></td><td colspan="2" class="result-cell" id="resVTotal">-</td><td></td>`;
+      tbodyV.appendChild(trR);
+      
+      // Tabla Horizontal
+      const tbodyH = document.querySelector('#tablaHorizontal tbody');
+      const rowsH = ['ACFBC', 'BA', 'CCFBC', 'BA'];
+      const colsH = ['FGRAL', 'INTERR', 'REEQ', 'EXLR'];
+      
+      rowsH.forEach((rowName, idx) => {
+        const tr = document.createElement('tr');
+        let html = `<td><strong>${rowName}</strong></td>`;
+        colsH.forEach(col => {
+          html += `
+            <td>
+              <div class="toggle-btn-group">
+                <button class="toggle-btn" onclick="toggleEval(this, 'h', ${idx}, '${col}', '+')" data-val="+">+</button>
+                <button class="toggle-btn" onclick="toggleEval(this, 'h', ${idx}, '${col}', '0')" data-val="0">0</button>
+              </div>
+            </td>
+          `;
+        });
+        html += `<td class="result-cell" id="resH${idx}">-</td>`;
+        tr.innerHTML = html;
+        tbodyH.appendChild(tr);
+      });
+    }
+    
+    function toggleEval(btn, tipo, row, col, val) {
+      // Para tabla vertical solo hay un botón (+), toggle on/off
+      if (tipo === 'v') {
+        btn.classList.toggle('active');
+        if (!evalDataVertical[row]) evalDataVertical[row] = {};
+        evalDataVertical[row][col] = btn.classList.contains('active');
+        calcularResultadosVertical();
+      } else {
+        // Para horizontal hay dos botones (+ y 0)
+        const group = btn.parentElement;
+        group.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        if (!evalDataHorizontal[row]) evalDataHorizontal[row] = {};
+        evalDataHorizontal[row][col] = val;
+        calcularResultadosHorizontal();
+      }
+      autoSaveHC();
+    }
+    
+    function calcularResultadosVertical() {
+      let totalA = 0, totalP = 0;
+      for (let i = 1; i <= 6; i++) {
+        const a = evalDataVertical[i]?.A || false;
+        const p = evalDataVertical[i]?.P || false;
+        let res = '-';
+        if (a && !p) { res = 'A'; totalA++; }
+        else if (!a && p) { res = 'P'; totalP++; }
+        else if (a && p) { res = '='; }
+        document.getElementById(`resV${i}`).textContent = res;
+      }
+      let total = '-';
+      if (totalA > totalP) total = 'A +' + (totalA - totalP);
+      else if (totalP > totalA) total = 'P +' + (totalP - totalA);
+      else if (totalA > 0) total = '=';
+      document.getElementById('resVTotal').textContent = total;
+    }
+    
+    function calcularResultadosHorizontal() {
+      const rowsH = ['ACFBC', 'BA', 'CCFBC', 'BA'];
+      const colsH = ['FGRAL', 'INTERR', 'REEQ', 'EXLR'];
+      
+      rowsH.forEach((_, idx) => {
+        let countPlus = 0;
+        colsH.forEach(col => {
+          if (evalDataHorizontal[idx]?.[col] === '+') countPlus++;
+        });
+        document.getElementById(`resH${idx}`).textContent = countPlus > 0 ? '+' + countPlus : '-';
+      });
+    }
+    
     // ═══════════════════════════════════════════════════════════════════════
-    // API CALLS
+    // STATUS POPUP
     // ═══════════════════════════════════════════════════════════════════════
-    async function apiCall(action, data = {}) {
-      showLoading(true);
+    function showStatus(text) {
+      document.getElementById('statusText').textContent = text;
+      document.getElementById('statusBackdrop').classList.add('active');
+    }
+    
+    function hideStatus() {
+      document.getElementById('statusBackdrop').classList.remove('active');
+    }
+    
+    function showToast(msg, type = 'success') {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.className = 'toast ' + type;
+      setTimeout(() => toast.classList.add('show'), 10);
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+    
+    function showAutosave() {
+      const ind = document.getElementById('autosaveIndicator');
+      ind.classList.add('show');
+      setTimeout(() => ind.classList.remove('show'), 2000);
+    }
+    
+    // ═══════════════════════════════════════════════════════════════════════
+    // API CALL
+    // ═══════════════════════════════════════════════════════════════════════
+    async function apiCall(action, data = {}, statusMsg = 'Procesando...') {
+      showStatus(statusMsg);
       try {
         const response = await fetch(SCRIPT_URL, {
           method: 'POST',
-          mode: 'cors',
           redirect: 'follow',
           body: JSON.stringify({ action, apiSecret: API_SECRET, ...data })
         });
         const result = await response.json();
-        showLoading(false);
+        hideStatus();
         return result;
       } catch (error) {
-        showLoading(false);
+        hideStatus();
         showToast('Error de conexión: ' + error.message, 'error');
         return { success: false, error: error.message };
       }
     }
     
     // ═══════════════════════════════════════════════════════════════════════
+    // CACHE LOCAL
+    // ═══════════════════════════════════════════════════════════════════════
+    function saveToCache() {
+      const cache = { pacientes, timestamp: Date.now() };
+      localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
+    }
+    
+    function loadFromCache() {
+      try {
+        const cache = JSON.parse(localStorage.getItem(CACHE_KEY));
+        if (cache && cache.pacientes) {
+          pacientes = cache.pacientes;
+          renderPacientes();
+        }
+      } catch(e) {}
+    }
+    
+    function saveAutoSave(key, data) {
+      try {
+        const autosave = JSON.parse(localStorage.getItem(AUTOSAVE_KEY) || '{}');
+        autosave[key] = data;
+        localStorage.setItem(AUTOSAVE_KEY, JSON.stringify(autosave));
+        showAutosave();
+      } catch(e) {}
+    }
+    
+    function loadAutoSave(key) {
+      try {
+        const autosave = JSON.parse(localStorage.getItem(AUTOSAVE_KEY) || '{}');
+        return autosave[key] || null;
+      } catch(e) { return null; }
+    }
+    
+    function clearAutoSave(key) {
+      try {
+        const autosave = JSON.parse(localStorage.getItem(AUTOSAVE_KEY) || '{}');
+        delete autosave[key];
+        localStorage.setItem(AUTOSAVE_KEY, JSON.stringify(autosave));
+      } catch(e) {}
+    }
+    
+    // ═══════════════════════════════════════════════════════════════════════
     // PACIENTES
     // ═══════════════════════════════════════════════════════════════════════
     async function loadPacientes() {
-      const result = await apiCall('getPacientes');
+      const result = await apiCall('getPacientes', {}, 'Cargando pacientes...');
       if (result.success) {
         pacientes = result.pacientes;
+        saveToCache();
         renderPacientes();
       }
     }
@@ -1482,7 +1326,7 @@ Fecha: 2026-03-26 15:45 ARG
       const search = document.getElementById('searchPaciente').value.toLowerCase();
       
       const filtered = pacientes.filter(p => 
-        p.nya.toLowerCase().includes(search) || 
+        p.ayn.toLowerCase().includes(search) || 
         (p.tel && p.tel.includes(search))
       );
       
@@ -1494,80 +1338,119 @@ Fecha: 2026-03-26 15:45 ARG
       container.innerHTML = filtered.map(p => `
         <div class="patient-item ${selectedPaciente?.id === p.id ? 'selected' : ''}" onclick="selectPaciente('${p.id}')">
           <div class="patient-info">
-            <h3>${p.nya}</h3>
-            <span>📞 ${p.tel || 'Sin teléfono'} | 🏠 ${p.domicilio || 'Sin domicilio'}</span>
+            <h3>${p.ayn}</h3>
+            <p>📞 ${p.tel || '-'} | 📅 ${p.fechaNac || '-'}</p>
           </div>
           <div class="patient-actions">
-            <button class="btn btn-sm btn-secondary" onclick="event.stopPropagation(); editPaciente('${p.id}')">✏️</button>
-            <button class="btn btn-sm btn-danger" onclick="event.stopPropagation(); deletePaciente('${p.id}')">🗑️</button>
+            <button class="btn btn-sm btn-secondary" onclick="event.stopPropagation();editPaciente('${p.id}')">✏️</button>
+            <button class="btn btn-sm btn-danger" onclick="event.stopPropagation();deletePaciente('${p.id}')">🗑️</button>
           </div>
         </div>
       `).join('');
-    }
-    
-    function filterPacientes() {
-      renderPacientes();
     }
     
     function selectPaciente(id) {
       selectedPaciente = pacientes.find(p => p.id === id);
       renderPacientes();
       
-      // Mostrar tabs adicionales
-      document.getElementById('tabHistoria').style.display = 'flex';
-      document.getElementById('tabConsultas').style.display = 'flex';
-      document.getElementById('tabOrdenes').style.display = 'flex';
+      // Habilitar tabs
+      document.querySelectorAll('.nav-tab').forEach(tab => {
+        if (['historia', 'consultas', 'ordenes'].includes(tab.dataset.section)) {
+          tab.disabled = false;
+        }
+      });
       
-      showToast(`Paciente seleccionado: ${selectedPaciente.nya}`, 'success');
+      updatePatientHeaders();
+      showToast(`Paciente: ${selectedPaciente.ayn}`, 'success');
     }
     
-    function openPacienteModal(id = null) {
-      document.getElementById('modalPacienteTitle').textContent = id ? 'Editar Paciente' : 'Nuevo Paciente';
+    function updatePatientHeaders() {
+      if (!selectedPaciente) return;
+      const html = `
+        <div class="patient-header-item">
+          <span class="patient-header-label">Apellido y Nombre</span>
+          <span class="patient-header-value">${selectedPaciente.ayn}</span>
+        </div>
+        <div class="patient-header-item">
+          <span class="patient-header-label">Teléfono</span>
+          <span class="patient-header-value">${selectedPaciente.tel || '-'}</span>
+        </div>
+        <div class="patient-header-item">
+          <span class="patient-header-label">Fecha Nac.</span>
+          <span class="patient-header-value">${selectedPaciente.fechaNac || '-'}</span>
+        </div>
+        <div class="patient-header-item">
+          <span class="patient-header-label">Enf. Actual</span>
+          <span class="patient-header-value">${selectedPaciente.ea || '-'}</span>
+        </div>
+      `;
+      document.getElementById('patientHeaderHC').innerHTML = html;
+      document.getElementById('patientHeaderConsultas').innerHTML = html;
+      document.getElementById('patientHeaderOrdenes').innerHTML = html;
+    }
+    
+    function openNewPaciente() {
       document.getElementById('pacienteId').value = '';
-      document.getElementById('pacienteNya').value = '';
+      document.getElementById('pacienteAyn').value = '';
       document.getElementById('pacienteDomicilio').value = '';
       document.getElementById('pacienteTel').value = '';
       document.getElementById('pacienteOcupacion').value = '';
-      document.getElementById('pacienteFechaNac').value = '';
+      document.getElementById('pacienteFechaNacDia').value = '';
+      document.getElementById('pacienteFechaNacMes').value = '';
+      document.getElementById('pacienteFechaNacAnio').value = '';
       document.getElementById('pacienteEa').value = '';
-      
+      document.querySelector('#modalPaciente .modal-title').textContent = 'Nuevo Paciente';
       openModal('modalPaciente');
     }
     
     async function editPaciente(id) {
-      const result = await apiCall('getPaciente', { pacienteId: id });
+      const result = await apiCall('getPaciente', { pacienteId: id }, 'Cargando paciente...');
       if (result.success) {
         const p = result.paciente;
-        document.getElementById('modalPacienteTitle').textContent = 'Editar Paciente';
         document.getElementById('pacienteId').value = p.id;
-        document.getElementById('pacienteNya').value = p.nya;
+        document.getElementById('pacienteAyn').value = p.ayn || '';
         document.getElementById('pacienteDomicilio').value = p.domicilio || '';
         document.getElementById('pacienteTel').value = p.tel || '';
         document.getElementById('pacienteOcupacion').value = p.ocupacion || '';
-        document.getElementById('pacienteFechaNac').value = p.fechaNac || '';
+        
+        if (p.fechaNac) {
+          const parts = p.fechaNac.split('/');
+          if (parts.length === 3) {
+            document.getElementById('pacienteFechaNacDia').value = parts[0];
+            document.getElementById('pacienteFechaNacMes').value = parts[1];
+            document.getElementById('pacienteFechaNacAnio').value = parts[2];
+          }
+        }
+        
         document.getElementById('pacienteEa').value = p.ea || '';
+        document.querySelector('#modalPaciente .modal-title').textContent = 'Editar Paciente';
         openModal('modalPaciente');
       }
     }
     
     async function savePaciente() {
-      const nya = document.getElementById('pacienteNya').value.trim();
-      if (!nya) {
+      const ayn = document.getElementById('pacienteAyn').value.trim();
+      if (!ayn) {
         showToast('El apellido y nombre es obligatorio', 'error');
         return;
       }
       
+      const dia = document.getElementById('pacienteFechaNacDia').value.padStart(2, '0');
+      const mes = document.getElementById('pacienteFechaNacMes').value.padStart(2, '0');
+      const anio = document.getElementById('pacienteFechaNacAnio').value;
+      const fechaNac = dia && mes && anio ? `${dia}/${mes}/${anio}` : '';
+      
       const paciente = {
         id: document.getElementById('pacienteId').value || null,
-        nya: nya,
+        ayn,
         domicilio: document.getElementById('pacienteDomicilio').value.trim(),
         tel: document.getElementById('pacienteTel').value.trim(),
         ocupacion: document.getElementById('pacienteOcupacion').value.trim(),
-        fechaNac: document.getElementById('pacienteFechaNac').value,
+        fechaNac,
         ea: document.getElementById('pacienteEa').value.trim()
       };
       
-      const result = await apiCall('savePaciente', { paciente });
+      const result = await apiCall('savePaciente', { paciente }, 'Guardando paciente...');
       if (result.success) {
         showToast(result.message, 'success');
         closeModal('modalPaciente');
@@ -1578,20 +1461,19 @@ Fecha: 2026-03-26 15:45 ARG
     }
     
     async function deletePaciente(id) {
-      if (!confirm('¿Está seguro de eliminar este paciente?')) return;
-      
-      const result = await apiCall('deletePaciente', { pacienteId: id });
+      if (!confirm('¿Eliminar este paciente?')) return;
+      const result = await apiCall('deletePaciente', { pacienteId: id }, 'Eliminando...');
       if (result.success) {
+        showToast('Paciente eliminado', 'success');
         if (selectedPaciente?.id === id) {
           selectedPaciente = null;
-          document.getElementById('tabHistoria').style.display = 'none';
-          document.getElementById('tabConsultas').style.display = 'none';
-          document.getElementById('tabOrdenes').style.display = 'none';
+          document.querySelectorAll('.nav-tab').forEach(tab => {
+            if (['historia', 'consultas', 'ordenes'].includes(tab.dataset.section)) {
+              tab.disabled = true;
+            }
+          });
         }
-        showToast(result.message, 'success');
         loadPacientes();
-      } else {
-        showToast(result.error, 'error');
       }
     }
     
@@ -1601,216 +1483,145 @@ Fecha: 2026-03-26 15:45 ARG
     async function loadHistoriaClinica() {
       if (!selectedPaciente) return;
       
-      // Renderizar header del paciente
-      renderPatientHeader('patientHeaderHC');
+      // Intentar cargar autosave primero
+      const autosaved = loadAutoSave('hc_' + selectedPaciente.id);
+      if (autosaved) {
+        applyHistoriaData(autosaved);
+      }
       
-      const result = await apiCall('getHistoriaClinica', { pacienteId: selectedPaciente.id });
-      if (result.success) {
+      const result = await apiCall('getHistoriaClinica', { pacienteId: selectedPaciente.id }, 'Cargando historia clínica...');
+      if (result.success && result.historia) {
         historiaActual = result.historia;
-        
-        // Llenar campos
-        document.getElementById('hcDx').value = historiaActual.dx || '';
-        document.getElementById('hcEc').value = historiaActual.ec || '';
-        document.getElementById('hcNotas').value = historiaActual.notas || '';
-        
-        // Llenar tabla vertical
-        if (historiaActual.tablaVertical?.filas) {
-          historiaActual.tablaVertical.filas.forEach((fila, idx) => {
-            if (idx < 6) { // Solo las filas 1-6, no R
-              const cellA = document.querySelector(`#tablaVertical input[data-row="${idx}"][data-col="a"]`);
-              const cellP = document.querySelector(`#tablaVertical input[data-row="${idx}"][data-col="p"]`);
-              if (cellA) cellA.value = fila.a || '';
-              if (cellP) cellP.value = fila.p || '';
-            }
-          });
-        }
-        calcularResultadoVertical();
-        
-        // Llenar tabla horizontal
-        if (historiaActual.tablaHorizontal?.filas) {
-          historiaActual.tablaHorizontal.filas.forEach((fila, idx) => {
-            const cols = ['fgral', 'interr', 'reeq', 'exlr'];
-            cols.forEach(col => {
-              const cell = document.querySelector(`#tablaHorizontal input[data-row="${idx}"][data-col="${col}"]`);
-              if (cell) cell.value = fila[col] || '';
-            });
-          });
-        }
-        calcularResultadoHorizontal();
-        
-        // Llenar espinograma
-        if (historiaActual.espinograma) {
-          document.getElementById('chkEscoliosisDer').checked = historiaActual.espinograma.escoliosisDerecha || false;
-          document.getElementById('chkEscoliosisIzq').checked = historiaActual.espinograma.escoliosisIzquierda || false;
-          document.getElementById('chkCifosis').checked = historiaActual.espinograma.cifosis || false;
-          document.getElementById('chkLordosis').checked = historiaActual.espinograma.lordosis || false;
-          document.getElementById('chkRectCervical').checked = historiaActual.espinograma.rectificacionCervical || false;
-          document.getElementById('chkRectLumbar').checked = historiaActual.espinograma.rectificacionLumbar || false;
-          document.getElementById('chkHiperlordosis').checked = historiaActual.espinograma.hiperlordosis || false;
-          document.getElementById('chkHipercifosis').checked = historiaActual.espinograma.hipercifosis || false;
-          document.getElementById('espinogramaNotas').value = historiaActual.espinograma.notas || '';
-        }
-        updateSpineSvg();
+        applyHistoriaData(result.historia);
       }
     }
     
-    function calcularResultadoVertical() {
-      let countA = 0, countP = 0;
+    function applyHistoriaData(h) {
+      document.getElementById('hcDx').value = h.dx || '';
+      document.getElementById('hcEc').value = h.ec || '';
+      document.getElementById('hcEspinogramaNotes').value = h.espinogramaNotes || '';
       
-      for (let i = 0; i < 6; i++) {
-        const cellA = document.querySelector(`#tablaVertical input[data-row="${i}"][data-col="a"]`);
-        const cellP = document.querySelector(`#tablaVertical input[data-row="${i}"][data-col="p"]`);
-        if (cellA && cellA.value === '+') countA++;
-        if (cellP && cellP.value === '+') countP++;
+      // Cargar tablas
+      if (h.tablaVertical) {
+        evalDataVertical = typeof h.tablaVertical === 'string' ? JSON.parse(h.tablaVertical) : h.tablaVertical;
+        applyEvalVertical();
       }
-      
-      const resA = document.getElementById('resVerticalA');
-      const resP = document.getElementById('resVerticalP');
-      
-      if (countA > countP) {
-        resA.textContent = '+';
-        resP.textContent = '';
-      } else if (countP > countA) {
-        resA.textContent = '';
-        resP.textContent = '+';
-      } else if (countA > 0 || countP > 0) {
-        resA.textContent = '=';
-        resP.textContent = '=';
-      } else {
-        resA.textContent = '';
-        resP.textContent = '';
+      if (h.tablaHorizontal) {
+        evalDataHorizontal = typeof h.tablaHorizontal === 'string' ? JSON.parse(h.tablaHorizontal) : h.tablaHorizontal;
+        applyEvalHorizontal();
+      }
+      if (h.espinograma) {
+        const esp = typeof h.espinograma === 'string' ? JSON.parse(h.espinograma) : h.espinograma;
+        loadEspinograma(esp);
       }
     }
     
-    function calcularResultadoHorizontal() {
-      const cols = ['fgral', 'interr', 'reeq', 'exlr'];
-      let maxCount = 0;
-      let maxRows = [];
-      
-      for (let row = 0; row < 4; row++) {
-        let count = 0;
-        cols.forEach(col => {
-          const cell = document.querySelector(`#tablaHorizontal input[data-row="${row}"][data-col="${col}"]`);
-          if (cell && cell.value === '+') count++;
-        });
-        
-        if (count > maxCount) {
-          maxCount = count;
-          maxRows = [row];
-        } else if (count === maxCount && count > 0) {
-          maxRows.push(row);
+    function applyEvalVertical() {
+      document.querySelectorAll('#tablaVertical .toggle-btn').forEach(btn => {
+        const row = btn.dataset.row;
+        const col = btn.dataset.col;
+        if (evalDataVertical[row]?.[col]) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
         }
-      }
-      
-      // Limpiar todos los resultados
-      for (let row = 0; row < 4; row++) {
-        const resCell = document.querySelector(`#tablaHorizontal [data-result-row="${row}"]`);
-        if (resCell) resCell.textContent = '';
-      }
-      
-      // Marcar el/los máximos
-      maxRows.forEach(row => {
-        const resCell = document.querySelector(`#tablaHorizontal [data-result-row="${row}"]`);
-        if (resCell) resCell.textContent = '+';
       });
+      calcularResultadosVertical();
     }
     
-    function updateSpineSvg() {
-      // Mostrar/ocultar patologías según checkboxes
-      document.getElementById('pathEscoliosisDer').style.display = 
-        document.getElementById('chkEscoliosisDer').checked ? 'block' : 'none';
-      
-      document.getElementById('pathEscoliosisIzq').style.display = 
-        document.getElementById('chkEscoliosisIzq').checked ? 'block' : 'none';
-      
-      document.getElementById('pathCifosis').style.display = 
-        document.getElementById('chkCifosis').checked ? 'block' : 'none';
-      
-      document.getElementById('pathLordosis').style.display = 
-        document.getElementById('chkLordosis').checked ? 'block' : 'none';
-      
-      document.getElementById('pathRectCervical').style.display = 
-        document.getElementById('chkRectCervical').checked ? 'block' : 'none';
-      
-      document.getElementById('pathRectLumbar').style.display = 
-        document.getElementById('chkRectLumbar').checked ? 'block' : 'none';
-      
-      document.getElementById('pathHiperlordosis').style.display = 
-        document.getElementById('chkHiperlordosis').checked ? 'block' : 'none';
-      
-      document.getElementById('pathHipercifosis').style.display = 
-        document.getElementById('chkHipercifosis').checked ? 'block' : 'none';
+    function applyEvalHorizontal() {
+      document.querySelectorAll('#tablaHorizontal .toggle-btn-group').forEach(group => {
+        const btns = group.querySelectorAll('.toggle-btn');
+        const row = btns[0]?.closest('tr')?.rowIndex - 1;
+        const col = btns[0]?.dataset?.col;
+        
+        btns.forEach(btn => {
+          const val = btn.dataset.val;
+          const r = btn.closest('tr').rowIndex - 1;
+          const cell = btn.closest('td');
+          const cellIndex = cell.cellIndex - 1;
+          const cols = ['FGRAL', 'INTERR', 'REEQ', 'EXLR'];
+          const c = cols[cellIndex];
+          
+          if (evalDataHorizontal[r]?.[c] === val) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      });
+      calcularResultadosHorizontal();
+    }
+    
+    function autoSaveHC() {
+      if (!selectedPaciente) return;
+      const data = {
+        dx: document.getElementById('hcDx').value,
+        ec: document.getElementById('hcEc').value,
+        espinogramaNotes: document.getElementById('hcEspinogramaNotes').value,
+        tablaVertical: evalDataVertical,
+        tablaHorizontal: evalDataHorizontal,
+        espinograma: getEspinogramaData()
+      };
+      saveAutoSave('hc_' + selectedPaciente.id, data);
     }
     
     async function saveHistoriaClinica() {
       if (!selectedPaciente) return;
       
-      // Recopilar tabla vertical
-      const tablaVertical = { filas: [] };
-      for (let i = 0; i < 6; i++) {
-        const cellA = document.querySelector(`#tablaVertical input[data-row="${i}"][data-col="a"]`);
-        const cellP = document.querySelector(`#tablaVertical input[data-row="${i}"][data-col="p"]`);
-        tablaVertical.filas.push({
-          num: String(i + 1),
-          a: cellA ? cellA.value : '',
-          p: cellP ? cellP.value : ''
-        });
-      }
-      // Agregar fila R
-      tablaVertical.filas.push({
-        num: 'R',
-        a: document.getElementById('resVerticalA').textContent,
-        p: document.getElementById('resVerticalP').textContent
-      });
-      
-      // Recopilar tabla horizontal
-      const tablaHorizontal = { filas: [] };
-      const nombres = ['1 ACFBC', '2 BA', '3 CCFBC', '4 BA'];
-      const cols = ['fgral', 'interr', 'reeq', 'exlr'];
-      
-      for (let row = 0; row < 4; row++) {
-        const fila = { nombre: nombres[row] };
-        cols.forEach(col => {
-          const cell = document.querySelector(`#tablaHorizontal input[data-row="${row}"][data-col="${col}"]`);
-          fila[col] = cell ? cell.value : '';
-        });
-        const resCell = document.querySelector(`#tablaHorizontal [data-result-row="${row}"]`);
-        fila.r = resCell ? resCell.textContent : '';
-        tablaHorizontal.filas.push(fila);
-      }
-      
-      // Recopilar espinograma
-      const espinograma = {
-        escoliosisDerecha: document.getElementById('chkEscoliosisDer').checked,
-        escoliosisIzquierda: document.getElementById('chkEscoliosisIzq').checked,
-        cifosis: document.getElementById('chkCifosis').checked,
-        lordosis: document.getElementById('chkLordosis').checked,
-        rectificacionCervical: document.getElementById('chkRectCervical').checked,
-        rectificacionLumbar: document.getElementById('chkRectLumbar').checked,
-        hiperlordosis: document.getElementById('chkHiperlordosis').checked,
-        hipercifosis: document.getElementById('chkHipercifosis').checked,
-        notas: document.getElementById('espinogramaNotas').value
-      };
-      
       const historia = {
         dx: document.getElementById('hcDx').value,
         ec: document.getElementById('hcEc').value,
-        tablaVertical: tablaVertical,
-        tablaHorizontal: tablaHorizontal,
-        espinograma: espinograma,
-        notas: document.getElementById('hcNotas').value
+        espinogramaNotes: document.getElementById('hcEspinogramaNotes').value,
+        tablaVertical: JSON.stringify(evalDataVertical),
+        tablaHorizontal: JSON.stringify(evalDataHorizontal),
+        espinograma: JSON.stringify(getEspinogramaData())
       };
       
-      const result = await apiCall('saveHistoriaClinica', { 
-        pacienteId: selectedPaciente.id, 
-        historia: historia 
-      });
-      
+      const result = await apiCall('saveHistoriaClinica', { pacienteId: selectedPaciente.id, historia }, 'Guardando historia clínica...');
       if (result.success) {
-        showToast(result.message, 'success');
+        showToast('Historia clínica guardada', 'success');
+        clearAutoSave('hc_' + selectedPaciente.id);
       } else {
         showToast(result.error, 'error');
       }
+    }
+    
+    // ═══════════════════════════════════════════════════════════════════════
+    // ESPINOGRAMA
+    // ═══════════════════════════════════════════════════════════════════════
+    function togglePatologia(id) {
+      const el = document.getElementById(id);
+      const chk = document.getElementById('chk' + id.charAt(0).toUpperCase() + id.slice(1));
+      if (chk.checked) {
+        el.style.display = 'block';
+      } else {
+        el.style.display = 'none';
+      }
+      autoSaveHC();
+    }
+    
+    function getEspinogramaData() {
+      return {
+        escoliosisDer: document.getElementById('chkEscoliosisDer').checked,
+        escoliosisIzq: document.getElementById('chkEscoliosisIzq').checked,
+        cifosis: document.getElementById('chkCifosis').checked,
+        lordosisCerv: document.getElementById('chkLordosisCerv').checked,
+        lordosisLumb: document.getElementById('chkLordosisLumb').checked,
+        rectifCerv: document.getElementById('chkRectifCerv').checked,
+        rectifLumb: document.getElementById('chkRectifLumb').checked
+      };
+    }
+    
+    function loadEspinograma(data) {
+      Object.keys(data).forEach(key => {
+        const chk = document.getElementById('chk' + key.charAt(0).toUpperCase() + key.slice(1));
+        const el = document.getElementById(key);
+        if (chk) {
+          chk.checked = data[key];
+          if (el) el.style.display = data[key] ? 'block' : 'none';
+        }
+      });
     }
     
     // ═══════════════════════════════════════════════════════════════════════
@@ -1818,32 +1629,29 @@ Fecha: 2026-03-26 15:45 ARG
     // ═══════════════════════════════════════════════════════════════════════
     async function loadConsultas() {
       if (!selectedPaciente) return;
-      
-      renderPatientHeader('patientHeaderConsultas');
-      
-      const result = await apiCall('getConsultas', { pacienteId: selectedPaciente.id });
+      const result = await apiCall('getConsultas', { pacienteId: selectedPaciente.id }, 'Cargando consultas...');
       if (result.success) {
-        renderConsultas(result.consultas);
+        consultasActuales = result.consultas || [];
+        renderConsultas();
       }
     }
     
-    function renderConsultas(consultas) {
+    function renderConsultas() {
       const container = document.getElementById('consultasList');
-      
-      if (consultas.length === 0) {
+      if (consultasActuales.length === 0) {
         container.innerHTML = '<p style="text-align:center;color:var(--text-light);padding:40px;">No hay consultas registradas</p>';
         return;
       }
       
-      container.innerHTML = consultas.map(c => `
-        <div class="consulta-item">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+      container.innerHTML = consultasActuales.map(c => `
+        <div class="consulta-card">
+          <div style="display:flex;justify-content:space-between;align-items:start">
             <div>
-              <div class="consulta-fecha">📅 ${c.fecha}</div>
-              <div class="consulta-motivo">${c.motivo}</div>
-              ${c.observaciones ? `<div class="consulta-obs">${c.observaciones}</div>` : ''}
-              ${c.tratamiento ? `<div class="consulta-obs"><strong>Tratamiento:</strong> ${c.tratamiento}</div>` : ''}
-              ${c.proximaCita ? `<div class="consulta-obs"><strong>Próxima cita:</strong> ${c.proximaCita}</div>` : ''}
+              <div class="fecha">📅 ${c.fecha}</div>
+              <div class="motivo"><strong>Motivo:</strong> ${c.motivo || '-'}</div>
+              ${c.observaciones ? `<div style="font-size:0.85rem;margin-top:4px"><strong>Obs:</strong> ${c.observaciones}</div>` : ''}
+              ${c.tratamiento ? `<div style="font-size:0.85rem;margin-top:4px"><strong>Trat:</strong> ${c.tratamiento}</div>` : ''}
+              ${c.proximaCita ? `<div style="font-size:0.85rem;margin-top:4px;color:var(--primary)"><strong>Próx:</strong> ${c.proximaCita}</div>` : ''}
             </div>
             <button class="btn btn-sm btn-danger" onclick="deleteConsulta('${c.id}')">🗑️</button>
           </div>
@@ -1851,37 +1659,42 @@ Fecha: 2026-03-26 15:45 ARG
       `).join('');
     }
     
-    function openConsultaModal() {
+    function openNewConsulta() {
+      const today = new Date();
       document.getElementById('consultaId').value = '';
+      document.getElementById('consultaFechaDia').value = String(today.getDate()).padStart(2, '0');
+      document.getElementById('consultaFechaMes').value = String(today.getMonth() + 1).padStart(2, '0');
+      document.getElementById('consultaFechaAnio').value = today.getFullYear();
       document.getElementById('consultaMotivo').value = '';
       document.getElementById('consultaObs').value = '';
       document.getElementById('consultaTratamiento').value = '';
-      document.getElementById('consultaProximaCita').value = '';
+      document.getElementById('consultaProxDia').value = '';
+      document.getElementById('consultaProxMes').value = '';
+      document.getElementById('consultaProxAnio').value = '';
       openModal('modalConsulta');
     }
     
     async function saveConsulta() {
-      const motivo = document.getElementById('consultaMotivo').value.trim();
-      if (!motivo) {
-        showToast('El motivo es obligatorio', 'error');
-        return;
-      }
+      const dia = document.getElementById('consultaFechaDia').value.padStart(2, '0');
+      const mes = document.getElementById('consultaFechaMes').value.padStart(2, '0');
+      const anio = document.getElementById('consultaFechaAnio').value;
+      
+      const proxDia = document.getElementById('consultaProxDia').value.padStart(2, '0');
+      const proxMes = document.getElementById('consultaProxMes').value.padStart(2, '0');
+      const proxAnio = document.getElementById('consultaProxAnio').value;
       
       const consulta = {
         id: document.getElementById('consultaId').value || null,
-        motivo: motivo,
+        fecha: `${dia}/${mes}/${anio}`,
+        motivo: document.getElementById('consultaMotivo').value.trim(),
         observaciones: document.getElementById('consultaObs').value.trim(),
         tratamiento: document.getElementById('consultaTratamiento').value.trim(),
-        proximaCita: document.getElementById('consultaProximaCita').value
+        proximaCita: proxDia && proxMes && proxAnio ? `${proxDia}/${proxMes}/${proxAnio}` : ''
       };
       
-      const result = await apiCall('saveConsulta', { 
-        pacienteId: selectedPaciente.id, 
-        consulta: consulta 
-      });
-      
+      const result = await apiCall('saveConsulta', { pacienteId: selectedPaciente.id, consulta }, 'Guardando consulta...');
       if (result.success) {
-        showToast(result.message, 'success');
+        showToast('Consulta guardada', 'success');
         closeModal('modalConsulta');
         loadConsultas();
       } else {
@@ -1891,13 +1704,10 @@ Fecha: 2026-03-26 15:45 ARG
     
     async function deleteConsulta(id) {
       if (!confirm('¿Eliminar esta consulta?')) return;
-      
-      const result = await apiCall('deleteConsulta', { consultaId: id });
+      const result = await apiCall('deleteConsulta', { consultaId: id }, 'Eliminando...');
       if (result.success) {
-        showToast(result.message, 'success');
+        showToast('Consulta eliminada', 'success');
         loadConsultas();
-      } else {
-        showToast(result.error, 'error');
       }
     }
     
@@ -1906,81 +1716,73 @@ Fecha: 2026-03-26 15:45 ARG
     // ═══════════════════════════════════════════════════════════════════════
     async function loadOrdenes() {
       if (!selectedPaciente) return;
-      
-      renderPatientHeader('patientHeaderOrdenes');
-      
-      const result = await apiCall('getOrdenes', { pacienteId: selectedPaciente.id });
+      const result = await apiCall('getOrdenes', { pacienteId: selectedPaciente.id }, 'Cargando órdenes...');
       if (result.success) {
-        renderOrdenes(result.ordenes);
+        ordenesActuales = result.ordenes || [];
+        renderOrdenes();
       }
     }
     
-    function renderOrdenes(ordenes) {
+    function renderOrdenes() {
       const container = document.getElementById('ordenesList');
-      
-      if (ordenes.length === 0) {
+      if (ordenesActuales.length === 0) {
         container.innerHTML = '<p style="text-align:center;color:var(--text-light);padding:40px;">No hay órdenes registradas</p>';
         return;
       }
       
-      container.innerHTML = ordenes.map(o => {
-        const porcentaje = o.cantidadTotal > 0 ? (o.cantidadUsadas / o.cantidadTotal) * 100 : 0;
-        const agotada = o.cantidadUsadas >= o.cantidadTotal;
-        
+      container.innerHTML = ordenesActuales.map(o => {
+        const pct = Math.round((o.usadas / o.cantidad) * 100);
         return `
-        <div class="orden-card" style="${agotada ? 'border-left-color: var(--danger);' : ''}">
-          <div class="orden-header">
-            <div>
-              <span class="orden-fecha">📅 ${o.fechaEntrega}</span>
-              ${o.descripcion ? `<span style="color:var(--text-light);margin-left:12px;">${o.descripcion}</span>` : ''}
+          <div class="orden-card">
+            <div class="orden-header">
+              <div>
+                <strong>📋 ${o.descripcion || 'Orden'}</strong>
+                <div style="font-size:0.85rem;color:var(--text-light)">📅 ${o.fecha}</div>
+              </div>
+              <button class="btn btn-sm btn-danger" onclick="deleteOrden('${o.id}')">🗑️</button>
             </div>
-            <button class="btn btn-sm btn-danger" onclick="deleteOrden('${o.id}')">🗑️</button>
-          </div>
-          <div class="orden-progress">
-            <div class="orden-progress-bar">
-              <div class="orden-progress-fill" style="width: ${porcentaje}%"></div>
+            <div class="orden-progress-container">
+              <div class="orden-progress-bar">
+                <div class="orden-progress-fill" style="width:${pct}%"></div>
+              </div>
+              <div class="orden-controls">
+                <button class="btn-minus" onclick="updateOrden('${o.id}', ${o.usadas - 1})">−</button>
+                <span class="orden-count">${o.usadas} / ${o.cantidad}</span>
+                <button class="btn-plus" onclick="updateOrden('${o.id}', ${o.usadas + 1})">+</button>
+              </div>
             </div>
-            <span class="orden-progress-text">${o.cantidadUsadas} / ${o.cantidadTotal}</span>
           </div>
-          <div class="orden-controls" style="margin-top:12px;justify-content:center;">
-            <button class="orden-btn orden-btn-minus" onclick="updateOrdenUsadas('${o.id}', ${o.cantidadUsadas - 1})" ${o.cantidadUsadas <= 0 ? 'disabled' : ''}>−</button>
-            <span class="orden-count">${o.cantidadUsadas}</span>
-            <button class="orden-btn orden-btn-plus" onclick="updateOrdenUsadas('${o.id}', ${o.cantidadUsadas + 1})" ${o.cantidadUsadas >= o.cantidadTotal ? 'disabled' : ''}>+</button>
-          </div>
-          ${agotada ? '<p style="text-align:center;color:var(--danger);font-weight:600;margin-top:8px;">⚠️ Órdenes agotadas</p>' : ''}
-        </div>
-      `}).join('');
+        `;
+      }).join('');
     }
     
-    function openOrdenModal() {
+    function openNewOrden() {
+      const today = new Date();
       document.getElementById('ordenId').value = '';
-      document.getElementById('ordenFecha').value = new Date().toISOString().split('T')[0];
-      document.getElementById('ordenCantidad').value = '';
+      document.getElementById('ordenFechaDia').value = String(today.getDate()).padStart(2, '0');
+      document.getElementById('ordenFechaMes').value = String(today.getMonth() + 1).padStart(2, '0');
+      document.getElementById('ordenFechaAnio').value = today.getFullYear();
       document.getElementById('ordenDescripcion').value = '';
+      document.getElementById('ordenCantidad').value = '10';
       openModal('modalOrden');
     }
     
     async function saveOrden() {
-      const cantidad = parseInt(document.getElementById('ordenCantidad').value);
-      if (!cantidad || cantidad < 1) {
-        showToast('La cantidad es obligatoria y debe ser mayor a 0', 'error');
-        return;
-      }
+      const dia = document.getElementById('ordenFechaDia').value.padStart(2, '0');
+      const mes = document.getElementById('ordenFechaMes').value.padStart(2, '0');
+      const anio = document.getElementById('ordenFechaAnio').value;
       
       const orden = {
         id: document.getElementById('ordenId').value || null,
-        fechaEntrega: document.getElementById('ordenFecha').value,
-        cantidadTotal: cantidad,
-        descripcion: document.getElementById('ordenDescripcion').value.trim()
+        fecha: `${dia}/${mes}/${anio}`,
+        descripcion: document.getElementById('ordenDescripcion').value.trim(),
+        cantidad: parseInt(document.getElementById('ordenCantidad').value) || 10,
+        usadas: 0
       };
       
-      const result = await apiCall('saveOrden', { 
-        pacienteId: selectedPaciente.id, 
-        orden: orden 
-      });
-      
+      const result = await apiCall('saveOrden', { pacienteId: selectedPaciente.id, orden }, 'Guardando orden...');
       if (result.success) {
-        showToast(result.message, 'success');
+        showToast('Orden guardada', 'success');
         closeModal('modalOrden');
         loadOrdenes();
       } else {
@@ -1988,88 +1790,36 @@ Fecha: 2026-03-26 15:45 ARG
       }
     }
     
-    async function updateOrdenUsadas(id, usadas) {
-      if (usadas < 0) return;
+    async function updateOrden(id, newUsadas) {
+      const orden = ordenesActuales.find(o => o.id === id);
+      if (!orden) return;
       
-      const result = await apiCall('updateOrdenUsadas', { ordenId: id, usadas: usadas });
+      if (newUsadas < 0 || newUsadas > orden.cantidad) return;
+      
+      const result = await apiCall('updateOrdenUsadas', { ordenId: id, usadas: newUsadas }, 'Actualizando...');
       if (result.success) {
         loadOrdenes();
-      } else {
-        showToast(result.error, 'error');
       }
     }
     
     async function deleteOrden(id) {
       if (!confirm('¿Eliminar esta orden?')) return;
-      
-      const result = await apiCall('deleteOrden', { ordenId: id });
+      const result = await apiCall('deleteOrden', { ordenId: id }, 'Eliminando...');
       if (result.success) {
-        showToast(result.message, 'success');
+        showToast('Orden eliminada', 'success');
         loadOrdenes();
-      } else {
-        showToast(result.error, 'error');
       }
     }
     
     // ═══════════════════════════════════════════════════════════════════════
-    // HELPERS
+    // MODAL HELPERS
     // ═══════════════════════════════════════════════════════════════════════
-    function renderPatientHeader(containerId) {
-      if (!selectedPaciente) return;
-      
-      const container = document.getElementById(containerId);
-      container.innerHTML = `
-        <div class="patient-header-item">
-          <span class="patient-header-label">Apellido y Nombre</span>
-          <span class="patient-header-value">${selectedPaciente.nya}</span>
-        </div>
-        <div class="patient-header-item">
-          <span class="patient-header-label">Domicilio</span>
-          <span class="patient-header-value">${selectedPaciente.domicilio || '-'}</span>
-        </div>
-        <div class="patient-header-item">
-          <span class="patient-header-label">Teléfono</span>
-          <span class="patient-header-value">${selectedPaciente.tel || '-'}</span>
-        </div>
-        <div class="patient-header-item">
-          <span class="patient-header-label">Ocupación</span>
-          <span class="patient-header-value">${selectedPaciente.ocupacion || '-'}</span>
-        </div>
-        <div class="patient-header-item">
-          <span class="patient-header-label">F. Nacimiento</span>
-          <span class="patient-header-value">${selectedPaciente.fechaNac || '-'}</span>
-        </div>
-        <div class="patient-header-item">
-          <span class="patient-header-label">Enf. Actual</span>
-          <span class="patient-header-value">${selectedPaciente.ea || '-'}</span>
-        </div>
-        <div class="patient-header-item">
-          <span class="patient-header-label">Fecha Alta</span>
-          <span class="patient-header-value">${selectedPaciente.fechaAlta || '-'}</span>
-        </div>
-      `;
-    }
-    
     function openModal(id) {
       document.getElementById(id).classList.add('active');
     }
     
     function closeModal(id) {
       document.getElementById(id).classList.remove('active');
-    }
-    
-    function showLoading(show) {
-      document.getElementById('loadingOverlay').classList.toggle('active', show);
-    }
-    
-    function showToast(message, type = 'success') {
-      const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.className = 'toast ' + type + ' show';
-      
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 3000);
     }
   </script>
 </body>
