@@ -5,7 +5,7 @@ KINESIO HC - Sistema de Historias Clínicas y Consultas
 Kinesiólogo: Lic. Enrique Naveira
 ═══════════════════════════════════════════════════════════════════════════
 Archivo: index.html
-Fecha: 2026-03-26 18:05 ARG
+Fecha: 2026-03-26 18:20 ARG
 ═══════════════════════════════════════════════════════════════════════════
 -->
 <html lang="es">
@@ -102,28 +102,29 @@ Fecha: 2026-03-26 18:05 ARG
     /* NAV TABS */
     .nav-tabs {
       display: flex;
-      gap: 4px;
-      background: rgba(255,255,255,0.2);
-      padding: 4px;
-      border-radius: var(--radius-md);
+      gap: 6px;
+      background: rgba(255,255,255,0.15);
+      padding: 6px;
+      border-radius: var(--radius-lg);
     }
     
     .nav-tab {
-      padding: 8px 16px;
+      padding: 12px 24px;
       border: none;
       background: transparent;
       color: var(--white);
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      border-radius: var(--radius-sm);
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: var(--radius-md);
       cursor: pointer;
       transition: all 0.2s;
+      letter-spacing: 0.5px;
     }
     
-    .nav-tab:hover:not(:disabled) { background: rgba(255,255,255,0.2); }
-    .nav-tab.active { background: var(--white); color: var(--primary-dark); }
-    .nav-tab:disabled { opacity: 0.5; cursor: not-allowed; }
+    .nav-tab:hover:not(:disabled) { background: rgba(255,255,255,0.25); }
+    .nav-tab.active { background: var(--white); color: var(--primary-dark); box-shadow: var(--shadow-sm); }
+    .nav-tab:disabled { opacity: 0.4; cursor: not-allowed; }
     
     /* MAIN */
     .main { padding: 20px; max-width: 1200px; margin: 0 auto; }
@@ -282,12 +283,12 @@ Fecha: 2026-03-26 18:05 ARG
     
     .search-bar .form-input { flex: 1; }
     
-    .patient-list { display: grid; gap: 10px; }
+    .patient-list { display: grid; gap: 12px; }
     
     .patient-item {
       background: var(--cream);
-      border-radius: var(--radius-md);
-      padding: 14px 18px;
+      border-radius: var(--radius-lg);
+      padding: 18px 22px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -299,7 +300,7 @@ Fecha: 2026-03-26 18:05 ARG
     .patient-item:hover {
       background: var(--mint-light);
       border-color: var(--primary);
-      transform: translateX(3px);
+      transform: translateX(4px);
     }
     
     .patient-item.selected {
@@ -308,17 +309,36 @@ Fecha: 2026-03-26 18:05 ARG
     }
     
     .patient-info h3 {
-      font-size: 1rem;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
       color: var(--text-dark);
-      margin-bottom: 2px;
+      margin-bottom: 6px;
     }
     
-    .patient-info p {
-      font-size: 0.8rem;
+    .patient-info .patient-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.85rem;
       color: var(--text-light);
     }
     
-    .patient-actions { display: flex; gap: 6px; }
+    .patient-info .patient-details span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .patient-info .patient-details .detail-os {
+      background: var(--lavender);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      color: #6b21a8;
+    }
+    
+    .patient-actions { display: flex; gap: 8px; }
     
     /* PATIENT HEADER */
     .patient-header {
@@ -1365,7 +1385,8 @@ Fecha: 2026-03-26 18:05 ARG
       
       const filtered = pacientes.filter(p => 
         p.ayn.toLowerCase().includes(search) || 
-        (p.tel && p.tel.includes(search))
+        (p.tel && p.tel.includes(search)) ||
+        (p.obraSocial && p.obraSocial.toLowerCase().includes(search))
       );
       
       if (filtered.length === 0) {
@@ -1377,7 +1398,13 @@ Fecha: 2026-03-26 18:05 ARG
         <div class="patient-item ${selectedPaciente?.id === p.id ? 'selected' : ''}" onclick="selectPaciente('${p.id}')">
           <div class="patient-info">
             <h3>${p.ayn}</h3>
-            <p>📞 ${p.tel || '-'} | 📅 ${p.fechaNac || '-'}</p>
+            <div class="patient-details">
+              <span>📞 ${p.tel || '-'}</span>
+              <span>🎂 ${p.fechaNac || '-'}</span>
+              ${p.obraSocial ? `<span class="detail-os">🏥 ${p.obraSocial}</span>` : ''}
+              ${p.domicilio ? `<span>📍 ${p.domicilio}</span>` : ''}
+              ${p.ocupacion ? `<span>💼 ${p.ocupacion}</span>` : ''}
+            </div>
           </div>
           <div class="patient-actions">
             <button class="btn btn-sm btn-secondary" onclick="event.stopPropagation();editPaciente('${p.id}')">✏️</button>
