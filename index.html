@@ -5,7 +5,7 @@ KINESIO HC - Sistema de Historias Clínicas y Consultas
 Kinesiólogo: Lic. Enrique Naveira
 ═══════════════════════════════════════════════════════════════════════════
 Archivo: index.html
-Fecha: 2026-03-26 18:40 ARG
+Fecha: 2026-03-26 18:48 ARG
 ═══════════════════════════════════════════════════════════════════════════
 -->
 <html lang="es">
@@ -713,6 +713,25 @@ Fecha: 2026-03-26 18:40 ARG
     
     .autosave-indicator.show { opacity: 1; }
     
+    /* FOOTER */
+    .app-footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.75rem;
+      color: var(--text-light);
+      opacity: 0.7;
+    }
+    
+    .app-footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .app-footer a:hover {
+      text-decoration: underline;
+    }
+    
     /* RESPONSIVE */
     @media (max-width: 768px) {
       .header { 
@@ -1257,6 +1276,11 @@ Fecha: 2026-03-26 18:40 ARG
   
   <!-- AUTOSAVE INDICATOR -->
   <div class="autosave-indicator" id="autosaveIndicator">✓ Guardado automático</div>
+
+  <!-- FOOTER -->
+  <footer class="app-footer">
+    Diseñado por <a href="https://wa.me/5491161630873" target="_blank">GR10</a>
+  </footer>
 
   <script>
     // ═══════════════════════════════════════════════════════════════════════
@@ -2002,21 +2026,43 @@ Fecha: 2026-03-26 18:40 ARG
                 <strong>📋 ${o.descripcion || 'Orden'}</strong>
                 <div style="font-size:0.85rem;color:var(--text-light)">📅 ${o.fecha}</div>
               </div>
-              <button class="btn btn-sm btn-danger" onclick="deleteOrden('${o.id}')">🗑️</button>
+              <button type="button" class="btn btn-sm btn-danger" data-delete-orden="${o.id}">🗑️</button>
             </div>
             <div class="orden-progress-container">
               <div class="orden-progress-bar">
                 <div class="orden-progress-fill" style="width:${pct}%"></div>
               </div>
               <div class="orden-controls">
-                <button class="btn-minus" onclick="updateOrden('${o.id}', ${o.usadas - 1})">−</button>
+                <button type="button" class="btn-minus" data-orden-id="${o.id}" data-action="minus" data-usadas="${o.usadas}">-</button>
                 <span class="orden-count">${o.usadas} / ${o.cantidad}</span>
-                <button class="btn-plus" onclick="updateOrden('${o.id}', ${o.usadas + 1})">+</button>
+                <button type="button" class="btn-plus" data-orden-id="${o.id}" data-action="plus" data-usadas="${o.usadas}">+</button>
               </div>
             </div>
           </div>
         `;
       }).join('');
+      
+      // Event listeners para botones +/-
+      container.querySelectorAll('[data-orden-id]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const id = this.dataset.ordenId;
+          const usadas = parseInt(this.dataset.usadas);
+          const action = this.dataset.action;
+          const newUsadas = action === 'plus' ? usadas + 1 : usadas - 1;
+          updateOrden(id, newUsadas);
+        });
+      });
+      
+      // Event listeners para eliminar
+      container.querySelectorAll('[data-delete-orden]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          deleteOrden(this.dataset.deleteOrden);
+        });
+      });
     }
     
     function openNewOrden() {
