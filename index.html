@@ -5,7 +5,7 @@ KINESIO HC - Sistema de Historias Clínicas y Consultas
 Kinesiólogo: Lic. Enrique Naveira
 ═══════════════════════════════════════════════════════════════════════════
 Archivo: index.html
-Fecha: 2026-03-26 18:35 ARG
+Fecha: 2026-03-26 18:40 ARG
 ═══════════════════════════════════════════════════════════════════════════
 -->
 <html lang="es">
@@ -219,6 +219,9 @@ Fecha: 2026-03-26 18:35 ARG
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
     }
     
     .btn-primary {
@@ -226,17 +229,17 @@ Fecha: 2026-03-26 18:35 ARG
       color: var(--white);
     }
     
-    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-primary:hover, .btn-primary:active { background: var(--primary-dark); transform: translateY(-1px); }
     
     .btn-secondary {
       background: var(--cream);
       color: var(--text-dark);
     }
     
-    .btn-secondary:hover { background: var(--mint-light); }
+    .btn-secondary:hover, .btn-secondary:active { background: var(--mint-light); }
     
     .btn-danger { background: var(--coral); color: var(--white); }
-    .btn-danger:hover { background: var(--danger); }
+    .btn-danger:hover, .btn-danger:active { background: var(--danger); }
     
     .btn-sm { padding: 6px 12px; font-size: 0.8rem; }
     
@@ -533,20 +536,23 @@ Fecha: 2026-03-26 18:35 ARG
     }
     
     .orden-controls button {
-      width: 28px;
-      height: 28px;
+      width: 36px;
+      height: 36px;
       border: none;
       border-radius: 50%;
-      font-size: 1rem;
+      font-size: 1.2rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
     }
     
     .orden-controls .btn-minus { background: var(--coral); color: white; }
     .orden-controls .btn-plus { background: var(--success); color: white; }
-    .orden-controls .btn-minus:hover { background: var(--danger); }
-    .orden-controls .btn-plus:hover { background: var(--primary); }
+    .orden-controls .btn-minus:hover, .orden-controls .btn-minus:active { background: var(--danger); }
+    .orden-controls .btn-plus:hover, .orden-controls .btn-plus:active { background: var(--primary); }
     
     .orden-count {
       font-weight: 700;
@@ -801,6 +807,25 @@ Fecha: 2026-03-26 18:35 ARG
       
       .consulta-header h4, .orden-header h4 { font-size: 0.95rem; }
       .consulta-body, .orden-body { font-size: 0.85rem; }
+      
+      /* Orden controls más grandes en mobile */
+      .orden-controls {
+        gap: 12px;
+      }
+      
+      .orden-controls button {
+        width: 44px;
+        height: 44px;
+        font-size: 1.4rem;
+      }
+      
+      .orden-card {
+        padding: 14px;
+      }
+      
+      .orden-progress-container {
+        gap: 10px;
+      }
       
       /* Modal */
       .modal-content {
