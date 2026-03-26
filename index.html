@@ -5,7 +5,7 @@ KINESIO HC - Sistema de Historias Clínicas y Consultas
 Kinesiólogo: Lic. Enrique Naveira
 ═══════════════════════════════════════════════════════════════════════════
 Archivo: index.html
-Fecha: 2026-03-26 19:05 ARG
+Fecha: 2026-03-26 19:10 ARG
 ═══════════════════════════════════════════════════════════════════════════
 -->
 <html lang="es">
@@ -321,7 +321,7 @@ Fecha: 2026-03-26 19:05 ARG
     
     .patient-info h3 {
       font-family: 'Quicksand', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: var(--text-dark);
       margin-bottom: 6px;
@@ -330,9 +330,9 @@ Fecha: 2026-03-26 19:05 ARG
     .patient-info .patient-details {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      font-size: 0.85rem;
-      color: var(--text-light);
+      gap: 16px;
+      font-size: 0.8rem;
+      color: #555;
     }
     
     .patient-info .patient-details span {
@@ -341,41 +341,51 @@ Fecha: 2026-03-26 19:05 ARG
       gap: 4px;
     }
     
-    .patient-info .patient-details .detail-os {
-      background: var(--lavender);
-      padding: 2px 8px;
-      border-radius: var(--radius-sm);
+    .patient-info .patient-details .detail-label {
       font-weight: 600;
-      color: #6b21a8;
+      color: var(--primary-dark);
+      text-transform: uppercase;
+      font-size: 0.65rem;
+      letter-spacing: 0.5px;
+    }
+    
+    .patient-info .patient-details .detail-os {
+      background: var(--primary);
+      padding: 3px 10px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      color: white;
+      font-size: 0.75rem;
     }
     
     .patient-actions { display: flex; gap: 8px; }
     
     /* PATIENT HEADER */
     .patient-header {
-      background: linear-gradient(135deg, var(--mint) 0%, var(--mint-light) 100%);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
       border-radius: var(--radius-lg);
-      padding: 16px;
+      padding: 18px 20px;
       margin-bottom: 16px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 12px;
+      gap: 14px;
+      box-shadow: var(--shadow-md);
     }
     
-    .patient-header-item { display: flex; flex-direction: column; }
+    .patient-header-item { display: flex; flex-direction: column; gap: 2px; }
     
     .patient-header-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--primary-dark);
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
     }
     
     .patient-header-value {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text-dark);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
     }
     
     /* EVAL TABLES */
@@ -1619,12 +1629,12 @@ Fecha: 2026-03-26 19:05 ARG
       // Header informativo
       let headerInfo = '';
       if (!esBusqueda && search.length === 0) {
-        headerInfo = `<div style="text-align:center;padding:10px;color:var(--text-light);font-size:0.85rem;margin-bottom:10px;">
-          📋 Mostrando ${pacientes.length} pacientes con actividad en el último mes (Total: ${totalPacientes})
+        headerInfo = `<div style="text-align:center;padding:10px;color:var(--text-light);font-size:0.8rem;margin-bottom:10px;">
+          Mostrando ${pacientes.length} pacientes con actividad reciente — Total: ${totalPacientes}
         </div>`;
       } else if (esBusqueda) {
-        headerInfo = `<div style="text-align:center;padding:10px;color:var(--text-light);font-size:0.85rem;margin-bottom:10px;">
-          🔍 ${pacientes.length} resultado${pacientes.length !== 1 ? 's' : ''} para "${search}"
+        headerInfo = `<div style="text-align:center;padding:10px;color:var(--text-light);font-size:0.8rem;margin-bottom:10px;">
+          ${pacientes.length} resultado${pacientes.length !== 1 ? 's' : ''} para "${search}"
         </div>`;
       }
       
@@ -1633,16 +1643,16 @@ Fecha: 2026-03-26 19:05 ARG
           <div class="patient-info">
             <h3>${p.ayn}</h3>
             <div class="patient-details">
-              <span>📞 ${p.tel || '-'}</span>
-              <span>🎂 ${p.fechaNac || '-'}</span>
-              ${p.obraSocial ? `<span class="detail-os">🏥 ${p.obraSocial}</span>` : ''}
-              ${p.domicilio ? `<span>📍 ${p.domicilio}</span>` : ''}
-              ${p.ultimaConsulta ? `<span>📅 Últ: ${p.ultimaConsulta}</span>` : ''}
+              <span><span class="detail-label">Tel:</span> ${p.tel || '-'}</span>
+              <span><span class="detail-label">Nac:</span> ${p.fechaNac || '-'}</span>
+              ${p.obraSocial ? `<span class="detail-os">${p.obraSocial}</span>` : ''}
+              ${p.domicilio ? `<span><span class="detail-label">Dir:</span> ${p.domicilio}</span>` : ''}
+              ${p.ultimaConsulta ? `<span><span class="detail-label">Últ. consulta:</span> ${p.ultimaConsulta}</span>` : ''}
             </div>
           </div>
           <div class="patient-actions">
-            <button class="btn btn-sm btn-secondary" onclick="event.stopPropagation();editPaciente('${p.id}')">✏️</button>
-            <button class="btn btn-sm btn-danger" onclick="event.stopPropagation();deletePaciente('${p.id}')">🗑️</button>
+            <button type="button" class="btn btn-sm btn-secondary" onclick="event.stopPropagation();editPaciente('${p.id}')">Editar</button>
+            <button type="button" class="btn btn-sm btn-danger" onclick="event.stopPropagation();deletePaciente('${p.id}')">Eliminar</button>
           </div>
         </div>
       `).join('');
@@ -1956,13 +1966,13 @@ Fecha: 2026-03-26 19:05 ARG
         <div class="consulta-card">
           <div style="display:flex;justify-content:space-between;align-items:start">
             <div>
-              <div class="fecha">📅 ${c.fecha}</div>
+              <div class="fecha">${c.fecha}</div>
               <div class="motivo"><strong>Motivo:</strong> ${c.motivo || '-'}</div>
               ${c.observaciones ? `<div style="font-size:0.85rem;margin-top:4px"><strong>Obs:</strong> ${c.observaciones}</div>` : ''}
               ${c.tratamiento ? `<div style="font-size:0.85rem;margin-top:4px"><strong>Trat:</strong> ${c.tratamiento}</div>` : ''}
               ${c.proximaCita ? `<div style="font-size:0.85rem;margin-top:4px;color:var(--primary)"><strong>Próx:</strong> ${c.proximaCita}</div>` : ''}
             </div>
-            <button class="btn btn-sm btn-danger" onclick="deleteConsulta('${c.id}')">🗑️</button>
+            <button class="btn btn-sm btn-danger" onclick="deleteConsulta('${c.id}')"></button>
           </div>
         </div>
       `).join('');
@@ -2045,10 +2055,10 @@ Fecha: 2026-03-26 19:05 ARG
           <div class="orden-card">
             <div class="orden-header">
               <div>
-                <strong>📋 ${o.descripcion || 'Orden'}</strong>
-                <div style="font-size:0.85rem;color:var(--text-light)">📅 ${o.fecha}</div>
+                <strong>${o.descripcion || 'Orden'}</strong>
+                <div style="font-size:0.8rem;color:var(--text-light)">Fecha: ${o.fecha}</div>
               </div>
-              <button type="button" class="btn btn-sm btn-danger" data-delete-orden="${o.id}">🗑️</button>
+              <button type="button" class="btn btn-sm btn-danger" data-delete-orden="${o.id}">Eliminar</button>
             </div>
             <div class="orden-progress-container">
               <div class="orden-progress-bar">
