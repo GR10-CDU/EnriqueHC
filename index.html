@@ -5,7 +5,7 @@ KINESIO HC - Sistema de Historias Clínicas y Consultas
 Kinesiólogo: Lic. Enrique Naveira
 ═══════════════════════════════════════════════════════════════════════════
 Archivo: index.html
-Fecha: 2026-03-26 18:20 ARG
+Fecha: 2026-03-26 18:35 ARG
 ═══════════════════════════════════════════════════════════════════════════
 -->
 <html lang="es">
@@ -708,13 +708,135 @@ Fecha: 2026-03-26 18:20 ARG
     .autosave-indicator.show { opacity: 1; }
     
     /* RESPONSIVE */
-    @media (max-width: 600px) {
-      .header { flex-direction: column; gap: 10px; }
-      .nav-tabs { width: 100%; justify-content: center; }
-      .espinograma-container { grid-template-columns: 1fr; }
-      .spine-svg-container svg { max-height: 100px; }
-      .form-row { grid-template-columns: 1fr; }
-      .patient-header { grid-template-columns: 1fr 1fr; }
+    @media (max-width: 768px) {
+      .header { 
+        flex-direction: column; 
+        gap: 8px; 
+        padding: 12px 15px;
+      }
+      
+      .logo { gap: 10px; }
+      .logo-icon svg { width: 24px; height: 38px; }
+      .logo-text h1 { font-size: 1.1rem; }
+      .logo-text span { font-size: 0.7rem; }
+      
+      .nav-tabs { 
+        width: 100%; 
+        justify-content: center;
+        padding: 4px;
+        gap: 3px;
+      }
+      
+      .nav-tab {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+      }
+      
+      .main { padding: 12px; }
+      
+      .card {
+        padding: 14px;
+        border-radius: var(--radius-md);
+      }
+      
+      .card-title { font-size: 1.1rem; }
+      
+      /* Patient header compact */
+      .patient-header {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding: 12px;
+        margin-bottom: 12px;
+      }
+      
+      .patient-header-label { font-size: 0.6rem; }
+      .patient-header-value { font-size: 0.85rem; }
+      
+      /* Patient list compact */
+      .patient-item {
+        padding: 12px 14px;
+      }
+      
+      .patient-info h3 { font-size: 1rem; }
+      
+      .patient-info .patient-details {
+        font-size: 0.75rem;
+        gap: 6px;
+      }
+      
+      .patient-info .patient-details .detail-os {
+        padding: 1px 6px;
+        font-size: 0.7rem;
+      }
+      
+      .btn-sm { padding: 5px 10px; font-size: 0.75rem; }
+      
+      /* Forms */
+      .form-row { grid-template-columns: 1fr; gap: 10px; }
+      .form-label { font-size: 0.8rem; }
+      .form-input, .form-textarea, .form-select { 
+        padding: 10px; 
+        font-size: 0.9rem; 
+      }
+      
+      /* Tables compact */
+      .eval-table { font-size: 0.8rem; }
+      .eval-table th, .eval-table td { padding: 6px 4px; }
+      .eval-table .btn-toggle { 
+        width: 28px; 
+        height: 28px; 
+        font-size: 0.85rem; 
+      }
+      
+      /* Espinograma compact */
+      .espinograma-container { grid-template-columns: 1fr; gap: 12px; }
+      .spine-svg-container svg { max-height: 90px; }
+      .espinograma-checks { gap: 6px; }
+      .espinograma-checks label { font-size: 0.8rem; gap: 4px; }
+      
+      /* Consultas/Ordenes */
+      .consulta-item, .orden-item {
+        padding: 12px;
+      }
+      
+      .consulta-header h4, .orden-header h4 { font-size: 0.95rem; }
+      .consulta-body, .orden-body { font-size: 0.85rem; }
+      
+      /* Modal */
+      .modal-content {
+        margin: 10px;
+        max-height: 90vh;
+        border-radius: var(--radius-md);
+      }
+      
+      .modal-header, .modal-footer { padding: 12px 14px; }
+      .modal-body { padding: 14px; }
+      .modal-header h3 { font-size: 1.1rem; }
+    }
+    
+    @media (max-width: 400px) {
+      .nav-tab {
+        padding: 6px 8px;
+        font-size: 0.7rem;
+      }
+      
+      .patient-header {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+      
+      .patient-info .patient-details {
+        flex-direction: column;
+        gap: 3px;
+      }
+      
+      .eval-table .btn-toggle { 
+        width: 24px; 
+        height: 24px; 
+        font-size: 0.75rem; 
+      }
+      
+      .btn { padding: 8px 14px; font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -772,7 +894,7 @@ Fecha: 2026-03-26 18:20 ARG
           <button class="btn btn-primary" onclick="openNewPaciente()">+ Nuevo Paciente</button>
         </div>
         <div class="search-bar">
-          <input type="text" class="form-input" id="searchPaciente" placeholder="Buscar por apellido o teléfono..." oninput="renderPacientes()">
+          <input type="text" class="form-input" id="searchPaciente" placeholder="Buscar por apellido, teléfono u obra social..." oninput="onSearchInput()">
         </div>
         <div class="patient-list" id="patientList"></div>
       </div>
@@ -1370,31 +1492,72 @@ Fecha: 2026-03-26 18:20 ARG
     // ═══════════════════════════════════════════════════════════════════════
     // PACIENTES
     // ═══════════════════════════════════════════════════════════════════════
+    let totalPacientes = 0;
+    let searchTimeout = null;
+    
     async function loadPacientes() {
-      const result = await apiCall('getPacientes', {}, 'Cargando pacientes...');
+      const result = await apiCall('getPacientes', { soloRecientes: true }, 'Cargando pacientes recientes...');
       if (result.success) {
         pacientes = result.pacientes;
+        totalPacientes = result.totalPacientes || pacientes.length;
         saveToCache();
         renderPacientes();
       }
     }
     
-    function renderPacientes() {
-      const container = document.getElementById('patientList');
-      const search = document.getElementById('searchPaciente').value.toLowerCase();
-      
-      const filtered = pacientes.filter(p => 
-        p.ayn.toLowerCase().includes(search) || 
-        (p.tel && p.tel.includes(search)) ||
-        (p.obraSocial && p.obraSocial.toLowerCase().includes(search))
-      );
-      
-      if (filtered.length === 0) {
-        container.innerHTML = '<p style="text-align:center;color:var(--text-light);padding:40px;">No se encontraron pacientes</p>';
+    async function buscarPacientes(query) {
+      if (query.length < 2) {
+        // Si borra la búsqueda, volver a mostrar recientes
+        loadPacientes();
         return;
       }
       
-      container.innerHTML = filtered.map(p => `
+      const result = await apiCall('buscarPacientes', { query }, 'Buscando...');
+      if (result.success) {
+        pacientes = result.pacientes;
+        renderPacientes(true);
+      }
+    }
+    
+    function onSearchInput() {
+      clearTimeout(searchTimeout);
+      const query = document.getElementById('searchPaciente').value.trim();
+      
+      if (query.length === 0) {
+        loadPacientes();
+        return;
+      }
+      
+      // Debounce: esperar 400ms después de que deje de escribir
+      searchTimeout = setTimeout(() => {
+        buscarPacientes(query);
+      }, 400);
+    }
+    
+    function renderPacientes(esBusqueda = false) {
+      const container = document.getElementById('patientList');
+      const search = document.getElementById('searchPaciente').value.trim();
+      
+      if (pacientes.length === 0) {
+        container.innerHTML = search.length > 0 
+          ? '<p style="text-align:center;color:var(--text-light);padding:40px;">No se encontraron pacientes con ese criterio</p>'
+          : '<p style="text-align:center;color:var(--text-light);padding:40px;">No hay pacientes con actividad reciente</p>';
+        return;
+      }
+      
+      // Header informativo
+      let headerInfo = '';
+      if (!esBusqueda && search.length === 0) {
+        headerInfo = `<div style="text-align:center;padding:10px;color:var(--text-light);font-size:0.85rem;margin-bottom:10px;">
+          📋 Mostrando ${pacientes.length} pacientes con actividad en el último mes (Total: ${totalPacientes})
+        </div>`;
+      } else if (esBusqueda) {
+        headerInfo = `<div style="text-align:center;padding:10px;color:var(--text-light);font-size:0.85rem;margin-bottom:10px;">
+          🔍 ${pacientes.length} resultado${pacientes.length !== 1 ? 's' : ''} para "${search}"
+        </div>`;
+      }
+      
+      container.innerHTML = headerInfo + pacientes.map(p => `
         <div class="patient-item ${selectedPaciente?.id === p.id ? 'selected' : ''}" onclick="selectPaciente('${p.id}')">
           <div class="patient-info">
             <h3>${p.ayn}</h3>
@@ -1403,7 +1566,7 @@ Fecha: 2026-03-26 18:20 ARG
               <span>🎂 ${p.fechaNac || '-'}</span>
               ${p.obraSocial ? `<span class="detail-os">🏥 ${p.obraSocial}</span>` : ''}
               ${p.domicilio ? `<span>📍 ${p.domicilio}</span>` : ''}
-              ${p.ocupacion ? `<span>💼 ${p.ocupacion}</span>` : ''}
+              ${p.ultimaConsulta ? `<span>📅 Últ: ${p.ultimaConsulta}</span>` : ''}
             </div>
           </div>
           <div class="patient-actions">
